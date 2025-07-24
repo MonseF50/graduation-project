@@ -1,0 +1,263 @@
+<section class="banner py-4">
+  <div class="container mx-auto">
+    <h2 class="text-4xl font-semibold mb-10">shop</h2>
+    <div class="img relative">
+      <img
+        src="/images/black-firday.jpg"
+        class="w-full h-[300px] md:h-[500px]"
+        alt="banner image"
+      />
+      <div class="overlay absolute inset-0">
+        <div
+          [pTooltip]="tooltipContent"
+          severity="success"
+          tooltipPosition="left"
+          class="showMore size-[30px] rounded-full hidden md:flex cursor-pointer justify-center items-center bg-white absolute end-20 bottom-20"
+        >
+          <i class="fa-solid fa-plus text-xl font-semibold"></i>
+        </div>
+        <ng-template #tooltipContent>
+          <div class="flex items-center flex-col gap-3">
+            <h4 class="text-xl font-bold capitalize">offer sale</h4>
+            <span> <b>visit</b> and shop</span>
+          </div>
+        </ng-template>
+        <div
+          [pTooltip]="tooltipContent2"
+          severity="success"
+          tooltipPosition="left"
+          class="showMore size-[30px] rounded-full hidden md:flex cursor-pointer justify-center items-center bg-white absolute end-10 top-20"
+        >
+          <i class="fa-solid fa-plus text-xl font-semibold"></i>
+        </div>
+        <ng-template #tooltipContent2>
+          <div class="flex items-center flex-col gap-3">
+            <h4 class="text-xl font-bold capitalize">see all products</h4>
+            <span> <b>visit</b> and shop</span>
+          </div>
+        </ng-template>
+        <div
+          [pTooltip]="tooltipContent2"
+          severity="success"
+          tooltipPosition="right"
+          class="showMore size-[30px] rounded-full hidden md:flex cursor-pointer justify-center items-center bg-white absolute end-1/2 top-1/2"
+        >
+          <i class="fa-solid fa-plus text-xl font-semibold"></i>
+        </div>
+        <ng-template #tooltipContent2>
+          <div class="flex items-center flex-col gap-3">
+            <h4 class="text-xl font-bold capitalize">see all products</h4>
+            <span> <b>visit</b> and shop</span>
+          </div>
+        </ng-template>
+        <a
+          routerLink="/products"
+          class="text-xl capitalize md:text-2xl text-nowrap bg-white px-8 py-2 block w-fit hover:bg-primary hover:text-white transition rounded-md absolute start-10 md:start-20 2xl:start-30 bottom-4 md:bottom-10"
+        >
+          shop now
+          <span
+            class="fa-solid fa-arrow-right inline-block ms-4 text-xl"
+          ></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!--* Start all catergries section  -->
+<section class="all-categories my-20">
+  @if(categoriesData != null){
+  <div class="container mx-auto">
+    <div class="cat-container relative">
+      <owl-carousel-o [options]="customOptions" class="custom-owl" #owlCarsouel>
+        @for (cat of categoriesData; track cat._id ) {
+        <ng-template carouselSlide>
+          <div
+            class="inner flex flex-col items-center"
+            [routerLink]="[]"
+            fragment="porducts-section"
+          >
+            <div
+              (click)="categoreFilter(cat._id)"
+              class="img cursor-pointer flex flex-col justify-center size-[300px] md:size-[200px] rounded-full border border-primary overflow-hidden"
+            >
+              <img [src]="cat.image" [alt]="cat.slug" class="" />
+            </div>
+            <h4 class="mt-7 text-2xl w-fit pb-3">{{ cat.name }}</h4>
+          </div>
+        </ng-template>
+        }
+      </owl-carousel-o>
+      <div class="owl-buttons justify-between hidden md:flex">
+        <div
+          (click)="goPrev()"
+          class="arrow cursor-pointer size-[60px] bg-white border border-primary hover:bg-primary hover:text-white transition rounded-full aspect-square flex items-center justify-center text-3xl"
+        >
+          <span class="owl-prev fa-solid fa-angle-left"></span>
+        </div>
+        <div
+          (click)="goNext()"
+          class="arrow cursor-pointer size-[60px] bg-white border border-primary hover:bg-primary hover:text-white transition rounded-full aspect-square flex items-center justify-center text-3xl"
+        >
+          <span class="owl-next fa-solid fa-angle-right"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</section>
+<!--* End all catergries section  -->
+
+<!--*  Start Product and filter section  -->
+<section class="products bg-[#F3F7F2]" id="porducts-section">
+  <div class="container mx-auto">
+    <div
+      class="prod-container grid grid-cols-1 lg:grid-cols-[20%_1fr] gap-10 py-10"
+    >
+      <div class="filter-disctop hidden lg:block relative">
+        <div class="fillter-box sticky top-20">
+          <div class="card flex justify-center">
+            <p-accordion
+              value="0"
+              class="w-full"
+              expandIcon="pi pi-plus"
+              collapseIcon="pi  pi-minus"
+            >
+              <p-accordion-panel value="1" class="bg-transparent!">
+                <p-accordion-header>
+                  <h4 class="text-xl capitalize">fillter by: Price</h4>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <div class="filter-by-price mb-6">
+                    <p class="mb-3 text-xl">
+                      form {{ rangeValues[0] }} to {{ rangeValues[1] }}
+                      <small>EGY</small>
+                    </p>
+                    <div class="w-8/12 ps-3">
+                      <p-slider
+                        [min]="0"
+                        [max]="5000"
+                        [step]="0"
+                        [(ngModel)]="rangeValues"
+                        [range]="true"
+                      />
+                    </div>
+                    <button
+                      (click)="
+                        callProducts(
+                          categoreId,
+                          undefined,
+                          rangeValues[0],
+                          rangeValues[1]
+                        )
+                      "
+                      class="block w-fit py-1.5 px-8 mt-8 cursor-pointer rounded-md text-xl text-white bg-primary hover:bg-secondery transition"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+              <p-accordion-panel value="2">
+                <p-accordion-header>
+                  <h4 class="text-xl capitalize">fillter by: Categorie</h4>
+                </p-accordion-header>
+                <p-accordion-content class="bg-transparent!">
+                  <div class="filter-by-categore mb-6">
+                    <div class="categorie">
+                      <p
+                        (click)="callProducts()"
+                        class="p-2 hover:bg-gray-200/40 transition text-lg cursor-pointer"
+                      >
+                        All Products
+                      </p>
+                      @for (cat of categoriesData; track cat._id) {
+                      <p
+                        (click)="categoreFilter(cat._id, cat.name)"
+                        class="p-2 hover:bg-gray-200/40 transition text-lg cursor-pointer"
+                      >
+                        {{ cat.name }}
+                      </p>
+                      }
+                    </div>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+
+              <p-accordion-panel value="3">
+                <p-accordion-header>
+                  <h4 class="text-xl capitalize">fillter by: Brand</h4>
+                </p-accordion-header>
+                <p-accordion-content class="bg-transparent!">
+                  <div class="filter-by-brnad mb-6">
+                    <div class="brands"></div>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+            </p-accordion>
+          </div>
+        </div>
+      </div>
+      <div class="filter-mobile block lg:hidden"></div>
+      <!--! maket fillter in mobile with primng with  Drower -->
+      <div>
+        <div class="title flex items-baseline justify-between">
+          <div class="title flex gap-4 mb-10 items-baseline">
+            <h5 class="text-4xl">{{ categoreFilterName }}</h5>
+            <span class="text-black/60"> ( {{ productsNumber }} )</span>
+          </div>
+          <div class="flex gap-5">
+            <div class="limt">
+              <span class="text-xl text-meuted me-3">Show:</span>
+              <p-select
+                [options]="limitOptions"
+                [(ngModel)]="selectedLimitOptions"
+                optionLabel="name"
+                placeholder="12"
+                class="w-22 text-black!"
+              />
+            </div>
+            <div class="sort">
+              <p-select
+                [options]="sortOptions"
+                [(ngModel)]="selectedSortOptions"
+                optionLabel="name"
+                placeholder="Default Sort"
+                class="w-36 text-black!"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          #porductBox
+          class="display-product bg-white p-10 grid empty:grid-cols-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 relative"
+        >
+          @for (prod of productsData; track prod._id) {
+          <div
+            data-aos="fade-up"
+            data-aos-duration="400"
+            data-aos-offset="300"
+            data-aos-once="true"
+          >
+            <app-product-card [product]="prod"></app-product-card>
+          </div>
+          }@empty {
+          <p
+            class="text-2xl text-center capitalize absolute inset-0 flex justify-center items-center"
+          >
+            thers is no productd with this categor or price range
+          </p>
+          }
+        </div>
+        <div class="pagenation">
+          <p-paginator
+            (onPageChange)="onPageChange($event)"
+            [first]="first"
+            [rows]="rows"
+            [totalRecords]="productsNumber"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--*  End Product and filter section  -->

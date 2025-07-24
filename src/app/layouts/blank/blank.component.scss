@@ -1,0 +1,78 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+.fixed-shop {
+  > div {
+    width: 100px;
+    > span:first-of-type {
+      position: relative;
+      left: 0%;
+    }
+    &:hover > span:first-of-type {
+      animation: speed 1s linear alternate;
+      -webkit-animation: speed 300ms linear;
+    }
+  }
+}
+@keyframes speed {
+  0% {
+    left: 0%;
+    opacity: 1;
+  }
+  50% {
+    left: -50%;
+    opacity: 0;
+  }
+  51% {
+    left: 50%;
+    opacity: 0;
+  }
+  100% {
+    left: 0%;
+    opacity: 1;
+  }
+}
+.progress {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+
+  &.progress--is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .progress-circle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00aa36;
+    font-size: 20px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .progress-ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(-90deg);
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+/* tailwindcss import form tailwind npm install */
+@import "tailwindcss";
+@theme {
+  --color-primary: #00aa63;
+  --color-secondery: #243f2f;
+  --color-meuted: #666666;
+}
+
+/* flobite import , plugin and source form tailwind npm install */
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+/* pirmng icon library  */
+@import "primeicons/primeicons.css";
+
+/* google fonts  */
+@font-face {
+  font-family: "Gabarito", sans-serif;
+  src: url(/fonts/Gabarito/Gabarito-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "Rethink Sans", sans-serif;
+  src: url(/fonts/Pethink_Sans/RethinkSans-VariableFont_wght.ttf);
+}
+/* google fonts  */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Gabarito", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Rethink Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+a {
+  cursor: pointer;
+}
+.form-btn {
+  @apply w-1/3  block mt-4 px-10 font-bold cursor-pointer py-3 bg-primary rounded-2xl;
+}

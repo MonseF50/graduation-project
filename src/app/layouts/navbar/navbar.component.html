@@ -1,0 +1,346 @@
+<div #navbar class="absolute start-0 end-0 top-0 z-30">
+  <div class="bg-primary py-2">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-white items-center gap-3 flex z-50">
+        <app-language></app-language>
+        <p class="hidden md:block">
+          <i class="fa-solid fa-money-bill-wave"></i>
+          <span> Midseason Sale: 20% Off — Limited Time Only</span>
+        </p>
+      </div>
+      <div class="text-white flex gap-3">
+        <a class="border-white/50 border-e-[1px] pe-3 py-1 group">
+          <i class="fa-solid fa-shop"></i>
+          <span
+            class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline"
+            >about us</span
+          >
+        </a>
+        <a class="border-white/50 border-e-[1px] pe-3 py-1 group">
+          <i class="fa-regular fa-circle-question"></i>
+          <span
+            class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline"
+            >contact us</span
+          >
+        </a>
+        <a
+          class="border-white/50 border-e-[1px] pe-3 py-1 group hidden md:block"
+        >
+          <i class="fa-solid fa-shop"></i>
+          <span
+            class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline"
+            >blog</span
+          >
+        </a>
+        <a class="py-1 group hidden md:block">
+          <i class="fa-solid fa-location-dot"></i>
+          <span
+            class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline"
+            >store locator</span
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+  @if (isLogged) {
+  <nav [class.fixed-top]="isScrolled" class="bg-white border-gray-200 relative">
+    <div class="container mx-auto">
+      <div class="flex items-center py-3">
+        <a href="#" class="flex items-center gap-3">
+          <img src="/logo.png" class="w-[50px]" alt="shop logo" />
+          <h2 class="font-bold hidden sm:block">Metro Hyper</h2>
+        </a>
+        <div class="flex grow justify-between">
+          <div
+            class="browse mx-2 sm:mx-5 group relative px-5 group hidden bg-white border-2 border-primary hover:bg-primary xl:block"
+          >
+            <div
+              class="font-bold flex justify-center items-center text-primary group-hover:text-white cursor-pointer p-3 transition"
+            >
+              <i class="fa-solid fa-cubes"></i>
+              <span class="inline-block mx-5 text-sm sm:text-md"
+                >Browse Now</span
+              >
+              <i class="down fa-solid fa-angle-down"></i>
+              <i class="up hidden fa-solid fa-angle-up"></i>
+            </div>
+            <div
+              class="nav absolute hidden group-hover:block start-0 top-full w-full"
+            >
+              <ul
+                class="borws-links w-full bg-white flex-col shadow shadow-black/30"
+              >
+                <li>
+                  <a
+                    class="w-full py-3 block ps-5 hover:bg-meuted/20 transition"
+                    routerLink="home"
+                  >
+                    <i class="fa-solid fa-house"></i>
+                    <span class="ms-3">Home</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="w-full py-3 block ps-5 hover:bg-meuted/20 transition border-t-[1px] border-meuted/40"
+                    routerLink="cart"
+                  >
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="ms-3">Cart</span>
+                  </a>
+                </li>
+                <li class="porducts-link" #pordutsLi>
+                  <a
+                    class="group/prod w-full py-3 flex justify-between items-center px-5 hover:bg-meuted/20 transition border-t-[1px] border-meuted/40 peer"
+                    routerLink="products"
+                  >
+                    <div>
+                      <i class="fa-solid fa-sitemap"></i>
+                      <span class="ms-3"> Products</span>
+                    </div>
+                    <div class="arrow">
+                      <span class="group-hover/prod:hidden">
+                        <i class="fa-solid fa-angle-right"></i>
+                      </span>
+                      <span class="hidden group-hover/prod:inline-block">
+                        <i class="fa-solid fa-angle-left"></i>
+                      </span>
+                    </div>
+                  </a>
+                  <div
+                    class="products-mega-menue mega-menue w-[700px] grid grid-cols-1 md:grid-cols-[35%_1fr] gap-6"
+                  >
+                    <div class="left-side bg-[#f3f7f296] p-3 rounded-xl">
+                      <h5
+                        class="capitalize pb-2 w-fit relative mb-4 text-[16px]"
+                      >
+                        top porduct sold
+                      </h5>
+                      <ul>
+                        @for (prod of topSoldProducts?.slice(0,6); track $index)
+                        {
+                        <li>
+                          <a
+                            routerLink="/products"
+                            class="p-2 hover:bg-[#e1f0dea4] transition mb-1 block text-sm"
+                          >
+                            {{ prod.title.split(" ", 2).join(" ") }}
+                          </a>
+                        </li>
+                        }
+                      </ul>
+                      <h5
+                        class="capitalize pb-2 w-fit relative my-4 text-[16px]"
+                      >
+                        popular Items
+                      </h5>
+                      <ul>
+                        @for (prod of topSoldProducts?.slice(6); track $index) {
+                        <li>
+                          <a
+                            routerLink="/products"
+                            class="p-2.5 hover:bg-[#e1f0dea4] transition block text-sm"
+                          >
+                            {{ prod.title.split(" ", 2).join(" ") }}
+                          </a>
+                        </li>
+                        }
+                      </ul>
+                    </div>
+                    <div class="right-side pt-3">
+                      <h5 class="capitalize pb-2 w-fit relative mb-4">
+                        overview
+                      </h5>
+                      @for (prod of topSoldProducts?.slice(0,3); track prod.id)
+                      {
+                      <div
+                        class="card flex gap-5 mt-5 cursor-pointer"
+                        [routerLink]="['/productDetailes', prod._id]"
+                      >
+                        <div class="card-head">
+                          <img
+                            [src]="prod.imageCover"
+                            [alt]="prod.slug"
+                            class="w-full h-[120px] cursor-pointer"
+                          />
+                        </div>
+                        <div class="card-body text-center mt-2 px-5 grow">
+                          <h4 class="font-semibold">
+                            {{ prod?.title?.split(" ", 2)?.join(" ") }}
+                          </h4>
+                          <div class="price flex gap-3 justify-center">
+                            <span
+                              [class]="{
+                                'line-through': prod?.priceAfterDiscount
+                              }"
+                              class="font-bold text-xl text-red-700"
+                              >{{ prod?.price }}</span
+                            >
+                            <span class="text-red-700 font-bold text-xl"
+                              >{{ prod?.priceAfterDiscount }}
+                              <span class="text-sm">EGP</span></span
+                            >
+                          </div>
+                          <p class="text-meuted">
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <span class="text-sm inline-block m-2">{{
+                              prod?.ratingsAverage
+                            }}</span>
+                          </p>
+
+                          <button
+                            class="bg-primary w-full rounded-md text-white py-2 mt-5 cursor-pointer hover:bg-secondery transition"
+                          >
+                            Go To Shopping
+                          </button>
+                        </div>
+                      </div>
+                      }
+                    </div>
+                  </div>
+                </li>
+                <li class="categories-link">
+                  <a
+                    class="w-full group/cat py-3 flex justify-between items-center px-5 hover:bg-meuted/20 transition border-t-[1px] border-meuted/40"
+                    routerLink="categories"
+                  >
+                    <div>
+                      <i class="fa-solid fa-list"></i>
+                      <span class="ms-3"> Categries</span>
+                    </div>
+                    <div class="arrow">
+                      <span class="group-hover/cat:hidden">
+                        <i class="fa-solid fa-angle-right"></i>
+                      </span>
+                      <span class="hidden group-hover/cat:inline-block">
+                        <i class="fa-solid fa-angle-left"></i>
+                      </span>
+                    </div>
+                  </a>
+                  <div
+                    class="categories-mega-menue mega-menue w-[700px] grid grid-cols-1 md:grid-cols-[35%_1fr]"
+                  >
+                    <div class="left-side bg-[#f3f7f296]">
+                      <div class="p-5">
+                        <h5
+                          class="capitalize pb-2 w-fit relative mb-4 text-[16px]"
+                        >
+                          Categorie Side
+                        </h5>
+                        <ul>
+                          @for (cat of categoriesData; track cat._id) {
+                          <li>
+                            <a
+                              routerLink="/categories"
+                              class="p-2 hover:bg-[#e1f0dea4] transition mb-1 block text-sm"
+                              >{{ cat.name }}</a
+                            >
+                          </li>
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="rigth-side pt-3 w-full!">
+                      <h5 class="capitalize pb-2 w-fit relative mb-4 ms-5">
+                        overview
+                      </h5>
+                      @for (cat of categoriesData?.slice(0,3); track cat._id) {
+                      <div
+                        class="card grid grid-cols-[60%_1fr] gap-6 items-center justify-around"
+                      >
+                        <div
+                          class="card-head w-full rounded-full overflow-hidden"
+                        >
+                          <img
+                            [src]="cat.image"
+                            [alt]="cat.slug"
+                            class="size-[130px] block mx-auto rounded-full"
+                          />
+                        </div>
+                        <div class="card-body">
+                          <p class="mb-3">{{ cat.name }}</p>
+                          <a
+                            class="text-primary capitalize"
+                            routerLink="/categories"
+                          >
+                            see all ?</a
+                          >
+                        </div>
+                      </div>
+                      }
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a
+                    class="w-full group/brand py-3 flex justify-between items-center px-5 hover:bg-meuted/20 transition border-t-[1px] border-meuted/40"
+                    routerLink="brands"
+                  >
+                    <div>
+                      <i class="fa-solid fa-shuffle"></i>
+                      <span class="ms-3"> Brands</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="overlay-black bg-black/30 hidden h-screen w-screen fixed top-0 start-0"
+          ></div>
+          <div class="mobile-nav flex justify-center xl:hidden grow">
+            <div (click)="naBarVisible = true" class="icon cursor-pointer">
+              <i class="pi pi-align-center"></i>
+            </div>
+            <p-drawer
+              header="NavBar"
+              [(visible)]="naBarVisible"
+              position="right"
+            >
+              <p-panelmenu [model]="items" class="w-full md:w-80" />
+            </p-drawer>
+          </div>
+          <div class="search grow mx-5 hidden xl:block">
+            <form class="flex w-full relative">
+              <span
+                class="absolute top-1/2 start-3 text-meuted -translate-y-1/2"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <input
+                type="search"
+                name="search"
+                placeholder="Search Here"
+                class="shadow-none border-0 focus:outline-0 p-3 rounded-xl bg-meuted/10 w-full px-10"
+              />
+            </form>
+          </div>
+          <div class="flex items-center gap-3">
+            <div
+              class="userData border-black/30 inline-flex gap-2 cursor-pointer items-center border-e pe-3 text-black/70 hover:text-black transition"
+            >
+              <i class="fa-regular fa-circle-user text-2xl"></i>
+              <span class="font-semibold"> {{ userName }} </span>
+            </div>
+            <app-wish-list></app-wish-list>
+            <a
+              routerLink="/cart"
+              class="border-black/30 inline-flex items-center border-e pe-3 text-black/70 hover:text-black transition"
+            >
+              <i class="fa-solid fa-cart-shopping text-2xl"></i>
+              <span class="mx-2 font-semibold hidden md:block"> Cart</span>
+              <span> $0.000</span>
+            </a>
+            <a
+              (click)="logOut()"
+              class="inline-flex items-center text-black/70 hover:text-black transition"
+            >
+              <i class="fa-solid fa-right-from-bracket text-2xl"></i>
+              <span class="ms-2 font-semibold hidden md:block">Log Out </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  }
+</div>

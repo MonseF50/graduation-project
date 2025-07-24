@@ -1,0 +1,19 @@
+.offer-img-box {
+  &:hover .offer-img {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+  }
+  .offer-img {
+    transition: all 1500ms !important;
+    -webkit-transition: all 1500ms !important;
+    -moz-transition: all 1500ms !important;
+    -ms-transition: all 1500ms !important;
+    -o-transition: all 1500ms !important;
+  }
+}
+.gold-stars {
+  color: #fbbf24;
+}

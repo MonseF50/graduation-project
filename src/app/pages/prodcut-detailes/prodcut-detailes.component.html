@@ -1,0 +1,360 @@
+<p-toast />
+
+<section class="porduct-detailes" style="padding-top: 200px">
+  <div class="container mx-auto">
+    <div
+      class="detailes-container grid gap-5 md:gap-0 grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_35%_20%]"
+    >
+      <div>
+        <div class="inner md:pe-10" (mouseleave)="resetImageSRC()">
+          <div class="img flex justify-between relative">
+            <div
+              #wishList
+              (click)="wishListProduct($event)"
+              class="wish cursor-pointer absolute top-6 end-10 size-[50px] border border-black/20 rounded-full bg-white hover:bg-primary transition flex items-center justify-center"
+            >
+              <i
+                class="fa-regular fa-heart text-xl text-black/50 transition"
+              ></i>
+            </div>
+            <div class="images flex flex-col gap-3">
+              @for (img of productDetails?.images?.slice(0,5); track $index) {
+              <img
+                (mouseenter)="changeImage($event)"
+                [src]="img"
+                alt="image form another side"
+                class="size-[80px] block border border-black/20 p-2"
+              />
+              }
+            </div>
+            @if(imgSRC == null){
+            <img
+              #baseImage
+              [src]="productDetails?.imageCover"
+              class="w-10/12 block h-[500px] object-cover"
+              [alt]="productDetails?.slug"
+            />
+            }@else {
+            <img
+              #baseImage
+              [src]="imgSRC"
+              class="w-10/12 block h-[500px] object-cover"
+              [alt]="productDetails?.slug"
+            />
+            }
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="inner px-10 border-s-[1px] border-s-black/20 border-e-[1px] border-e-black/20"
+        >
+          <h2 class="text-4xl text-black/80 font-semibold mb-3 md:mb-6">
+            {{ productDetails?.title?.split(" ", 2)?.join(" ") }}
+          </h2>
+          <div class="rating flex gap-4 mb-5">
+            <span class="flex gap-1.5">
+              @for (star of numberOfStarts(); track $index) {
+              <i class="fa-solid fa-star text-[#FFD700]"></i>
+              }
+            </span>
+            <span class="text-black/50"
+              >( {{ productDetails?.ratingsQuantity }} Customer Review)</span
+            >
+          </div>
+          <div class="flex gap-5 mb-5">
+            <p class="text-black/60">
+              Avalable :
+              <span class="text-primary">{{ productDetails?.quantity }}</span>
+            </p>
+            <p class="px-4 border-s border-e border-black/20">
+              Brand :
+              <span class="text-meuted">{{ productDetails?.brand?.name }}</span>
+            </p>
+            <p>Return : <span class="text-meuted">30 Days</span></p>
+          </div>
+          <div class="price flex gap-5 items-baseline mb-5">
+            <p class="line-through text-meuted text-xl md:text-2xl">
+              {{ productDetails?.price }}
+            </p>
+            <p class="text-red-700/80 text-2xl md:text-5xl">
+              {{ productDetails?.priceAfterDiscount }}
+              <span class="text-xl">EGY</span>
+            </p>
+          </div>
+          <div class="sub-desc mb-5">
+            <p class="text-2xl">
+              {{ productDetails?.description?.split(" ", 20)?.join(" ") }}
+            </p>
+          </div>
+          <button
+            (click)="addProductCart(productDetails?._id!)"
+            class="py-2 text-2xl cursor-pointer bg-primary hover:bg-secondery transition w-10/12 block mx-auto text-white rounded-md"
+          >
+            Add To Cart
+          </button>
+          <div
+            class="payment border border-black/20 p-6 mt-10 rounded-md relative mb-5"
+          >
+            <h5
+              class="absolute -top-1/2 translate-y-1/2 w-11/12 pt-4 bg-white text-center mx-auto"
+            >
+              Guaranteed <span class="text-primary">safe</span> checkout
+            </h5>
+            <div class="parteners flex items-center gap-3 justify-center">
+              <a>
+                <img
+                  src="/images/amazon-pay.png"
+                  class="w-[60px]"
+                  alt="amazon pay "
+                />
+              </a>
+              <a>
+                <img
+                  class="w-[60px]"
+                  src="/images/American-Express-Color.png"
+                  alt="american express"
+                />
+              </a>
+              <a>
+                <img
+                  src="/images/mastercard.webp"
+                  class="w-[60px]"
+                  alt="mastercard"
+                />
+              </a>
+              <a>
+                <img src="/images/paypal.png" class="w-[60px]" alt="paypal" />
+              </a>
+            </div>
+          </div>
+          <p class="text-center">Your Payment is 100% Secure</p>
+        </div>
+      </div>
+      <div class="block md:hidden xl:block">
+        <div class="inner ps-0 xl:ps-10 flex flex-col items-center">
+          <div class="list mb-20">
+            <ul>
+              <li class="flex gap-2 mb-3 items-center">
+                <i class="text-primary/80 fa-solid fa-truck"></i>
+                <span class="text-black/80 text-sm"
+                  >Free Delivery Across the City</span
+                >
+              </li>
+              <li class="flex gap-2 mb-3 items-center">
+                <i class="text-primary/80 fa-solid fa-basket-shopping"></i>
+                <span class="text-black/80 text-sm">Secure Payments</span>
+              </li>
+              <li class="flex gap-2 mb-3 items-center">
+                <i class="text-primary/80 fa-solid fa-heart-pulse"></i>
+                <span class="text-black/80 text-sm"
+                  >100% Satisfaction Guarantee!</span
+                >
+              </li>
+              <li class="flex gap-2 mb-3 items-center">
+                <i class="text-primary/80 fa-regular fa-rectangle-list"></i>
+                <span class="text-black/80 text-sm">Top-Notch Support</span>
+              </li>
+            </ul>
+          </div>
+          <div class="relative overflow-hidden offer-img-box w-fit">
+            <img src="/images/min-banner.jpeg" class="offer-img" alt="" />
+            <div class="layer absolute inset-0 p-5">
+              <span class="text-sm text-primary font-bold">
+                Buy 1 Get 1 Free</span
+              >
+              <p class="font-bold text-black/80 text-2xl max-w-[60%] my-3">
+                Unbetable Quinty
+              </p>
+              <button
+                class="bg-primary hover:bg-secondery transition cursor-pointer w-10/12 block py-1.5 text-white rounded-md"
+              >
+                Shop Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews mt-10">
+      <p-tabs value="0">
+        <p-tablist>
+          <p-tab value="0">Description</p-tab>
+          <p-tab value="1">Reviews</p-tab>
+        </p-tablist>
+        <p-tabpanels>
+          <div class="mt-5">
+            <p-tabpanel value="0">
+              <div
+                class="grid grid-cols-1 md:grid-cols-[1fr_40%] gap-4 md:gap-20"
+              >
+                <div>
+                  <h3 class="text-3xl mb-5">Specification</h3>
+                  <div class="desc">
+                    <span>
+                      {{ productDetails?.description }}
+                    </span>
+                    <span class="leading-loose">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Magni dolor quos libero aperiam, inventore laboriosam eius
+                      blanditiis cumque animi exercitationem provident illum
+                      quis beatae unde aut! Possimus id explicabo nemo. Lorem
+                      ipsum dolor sit amet, consectetur adipisicing elit. Magni
+                      dolor quos libero aperiam, inventore laboriosam eius
+                      blanditiis cumque animi exercitationem provident illum
+                      quis beatae unde aut! Possimus id explicabo nemo.
+                    </span>
+                  </div>
+                </div>
+                <div class="mt-12">
+                  <ul>
+                    <li
+                      class="grid grid-cols-[40%_1fr] gap-10 ps-2 py-3 border-b-2 border-black/20"
+                    >
+                      <p class="capitalize text-2xl text-meuted">
+                        item number sold
+                      </p>
+                      <span class="text-2xl"> {{ productDetails?.sold }}</span>
+                    </li>
+                    <li
+                      class="grid grid-cols-[40%_1fr] gap-10 ps-2 py-3 border-b-2 border-black/20"
+                    >
+                      <p class="capitalize text-2xl text-meuted">
+                        categries name
+                      </p>
+                      <span class="text-2xl">
+                        {{ productDetails?.category?.name }}</span
+                      >
+                    </li>
+                    <li class="grid grid-cols-[40%_1fr] gap-10 ps-2 py-3">
+                      <p class="capitalize text-2xl text-meuted">brands name</p>
+                      <span class="text-2xl">
+                        {{ productDetails?.brand?.name }}</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </p-tabpanel>
+            <p-tabpanel value="1">
+              <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div>
+                  <p
+                    class="text-black font-semibold border-b pb-3 border-black/20 mb-4 uppercase"
+                  >
+                    add a review
+                  </p>
+                  <div class="rating mb-6">
+                    <p class="rate capitalize text-sm mb-3">
+                      your rating <span class="text-red-600 text-lg">*</span>
+                    </p>
+                    <div class="flex gap-2">
+                      <span
+                        (click)="goldStart($event)"
+                        #ref
+                        class="group cursor-pointer pe-1.5 block"
+                      >
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                      </span>
+                      <span
+                        (click)="goldStart($event)"
+                        class="group cursor-pointer px-1.5 block"
+                      >
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                      </span>
+                      <span
+                        (click)="goldStart($event)"
+                        class="group cursor-pointer px-1.5 block"
+                      >
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                      </span>
+                      <span
+                        (click)="goldStart($event)"
+                        class="group cursor-pointer px-1.5 block"
+                      >
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                      </span>
+                      <span
+                        (click)="goldStart($event)"
+                        class="group cursor-pointer px-1.5 block"
+                      >
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                        <i
+                          class="fa-solid fa-star text-[#66666630] group-hover:text-yellow-400 transition text-sm"
+                        ></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-4">
+                      Your Review <span class="text-red-600">*</span>
+                    </p>
+                    <form>
+                      <p-floatlabel variant="on">
+                        <textarea
+                          pTextarea
+                          id="over_label"
+                          rows="5"
+                          cols="30"
+                          style="resize: none"
+                          class="h-full w-full!"
+                        ></textarea>
+                        <label for="on_label">On Label</label>
+                      </p-floatlabel>
+                      <button
+                        type="submit"
+                        class="py-2 px-8 mt-5 text-xl cursor-pointer bg-secondery hover:bg-primary transition w-fit block text-white rounded-md"
+                      >
+                        Review
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <div class="show p-10">
+                  <div class="bg-[#F7F7F7] size-full"></div>
+                </div>
+              </div>
+            </p-tabpanel>
+          </div>
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+  </div>
+</section>

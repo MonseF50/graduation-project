@@ -1,0 +1,614 @@
+<!-- Start Welcom Section  -->
+<section class="welcom">
+  <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="rounded-lg overflow-hidden">
+      <div class="img relative">
+        <img
+          src="/images/delevry.jpg"
+          alt="delevry img"
+          class="h-[500px] object-cover block w-full"
+        />
+        <div
+          class="caption absolute inset-0 flex flex-col justify-between py-20 ps-10"
+        >
+          <h6 class="underline text-sm font-bold text-secondery">
+            Welcom To Metro Shop
+          </h6>
+          <h2
+            class="w-full lg:max-w-1/2 text-4xl font-extrabold text-secondery"
+          >
+            We Delivery on Next Day from 10:00 AM to 08:00 PM
+          </h2>
+          <p
+            class="w-full lg:max-w-1/2 font-semibold text-xl capitalize text-white"
+          >
+            *Frist Order Always Free
+          </p>
+          <button
+            class="shop-btn mt-4 cursor-pointer bg-white text-secondery w-fit px-6 py-3 rounded-xl flex items-center gap-3"
+          >
+            Shop Now
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-lg overflow-hidden w-full!">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+          <div class="img relative max-w-full!">
+            <img
+              src="/images/slider-4.jpeg"
+              class="h-[500px] block w-full"
+              alt=""
+            />
+            <div
+              class="caption absolute inset-0 flex flex-col justify-between py-20 ps-10"
+            >
+              <h6 class="underline text-sm font-bold text-[#3C0121]">
+                Big Sale
+              </h6>
+              <h2
+                class="w-full lg:max-w-1/2 text-4xl font-extrabold text-[#3C0121]"
+              >
+                Offer On Chocolate Products 25%
+              </h2>
+              <p
+                class="w-full lg:max-w-1/2 font-semibold text-xl capitalize text-white"
+              >
+                *Buy more than 1000EGP and get a bigger discount
+              </p>
+              <button
+                class="shop-btn cursor-pointer bg-white text-secondery w-fit px-6 py-3 rounded-xl flex items-center gap-3"
+              >
+                Shop Now
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="img relative">
+            <div class="w-full!">
+              <img
+                src="/images/slider-5.jpeg"
+                class="h-[500px] block w-full"
+                alt=""
+              />
+            </div>
+            <div
+              class="caption absolute inset-0 flex flex-col justify-between py-20 ps-10"
+            >
+              <h6 class="underline text-sm font-bold text-[#6352A2]">
+                Big Sale
+              </h6>
+              <h2
+                class="w-full lg:max-w-1/2 text-4xl font-extrabold text-[#6352A2]"
+              >
+                Offer On Coffe Products 20%
+              </h2>
+              <p
+                class="w-full lg:max-w-1/2 font-semibold text-xl capitalize text-white"
+              >
+                *Buy more than 1000EGP and get a bigger discount
+              </p>
+              <button
+                class="shop-btn cursor-pointer bg-white text-secondery w-fit px-6 py-3 rounded-xl flex items-center gap-3"
+              >
+                Shop Now
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+<!-- End Welcom Section  -->
+<!-- Start animation icon section  -->
+
+<div class="icon container mx-auto">
+  <div class="grid grid-cols-2 lg:grid-cols-4 py-10 gap-5">
+    <div class="icon text-center">
+      <i class="fa-solid fa-heart fa-beat fa-2x text-red-700"></i>
+      <h6 class="mt-3 mb-1 text-xl font-bold">100% Satisfaction Guarantee!</h6>
+      <p class="text-meuted">Made With Love</p>
+    </div>
+    <div class="icon text-center">
+      <i class="fa-solid fa-motorcycle fa-beat-fade fa-2x text-primary"></i>
+      <h6 class="mt-3 mb-1 text-xl font-bold">24 Hours Delevery</h6>
+      <p class="text-meuted">First Order Always Free</p>
+    </div>
+    <div class="icon text-center">
+      <i class="fa-solid fa-money-bill fa-bounce fa-2x text-green-700"></i>
+      <h6 class="mt-3 mb-1 text-xl font-bold">Secure Payments</h6>
+      <p class="text-meuted">We use safest payment technologies</p>
+    </div>
+    <div class="icon text-center">
+      <i class="fa-brands fa-rocketchat fa-shake fa-2x"></i>
+      <h6 class="mt-3 mb-1 text-xl font-bold">Top-Notch Support</h6>
+      <p class="text-meuted">Chat with us if you’ve any questions</p>
+    </div>
+  </div>
+</div>
+<!-- End animation icon section  -->
+<!-- Start ContDown Section  -->
+<section class="deal-of-mounth bg-[#EBF0EB] py-5">
+  <div class="container mx-auto">
+    <div class="cont-container grid grid-cols-1 xl:grid-cols-[25%_1fr]">
+      <div
+        class="count-down text-center text-white p-10 flex flex-col justify-between"
+      >
+        <div>
+          <small class="font-semibold">Hot This Month</small>
+          <p class="text-4xl capitalize font-bold">
+            best slae ever
+            <span class="text-gray-800 block mt-4">50% discount</span>
+          </p>
+        </div>
+        <div
+          class="count-box bg-white/70 flex flex-wrap px-4 py-2 gap-1.5 rounded-xl items-center text-black w-fit mx-auto"
+        >
+          <div class="flex flex-col gap-1 items-center">
+            <p class="text-[30px] font-bold text-secondery">{{ days }}</p>
+            <span class="text-[12px]">DAYS</span>
+          </div>
+          <span class="font-bold text-2xl">:</span>
+          <div class="flex flex-col gap-1 items-center">
+            <p class="text-[30px] font-bold text-secondery">{{ hours }}</p>
+            <span class="text-[12px]">HOURS</span>
+          </div>
+          <span class="font-bold text-2xl">:</span>
+          <div class="flex flex-col gap-1 items-center">
+            <p class="text-[30px] font-bold text-secondery">{{ minutes }}</p>
+            <span class="text-[12px]">MINUTES</span>
+          </div>
+          <span class="font-bold text-2xl">:</span>
+          <div class="flex flex-col gap-1 items-center">
+            <p class="text-[30px] font-bold text-secondery">{{ seconds }}</p>
+            <span class="text-[12px]">SECOND</span>
+          </div>
+        </div>
+      </div>
+      <div class="deal bg-white/80 p-5">
+        <h3 class="text-3xl font-bold mb-5">Deal Of The Month :</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+          @for (prod of productsData?.slice(0,12 ); track prod._id) {
+          @if(prod.priceAfterDiscount){
+          <app-product-card [product]="prod"></app-product-card>
+          } }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End ContDown Section  -->
+<!-- Start Categories  section  -->
+
+<section class="categories my-10">
+  <div class="container mx-auto">
+    <div class="title flex items-baseline justify-between">
+      <h2 class="text-2xl md:text-4xl mb-4 font-bold">
+        Our Trending Categories :
+      </h2>
+      <a
+        routerLink="/categories"
+        class="text-meuted hover:text-primary transition hidden md:block"
+      >
+        See All Categries
+        <span class="fa-solid fa-arrow-right ms-2 inline-block"></span>
+      </a>
+    </div>
+    <div class="cat-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+      @for (cat of categriesData?.slice(0,6); track cat._id) {
+      <div
+        class="card border border-gray-300 flex justify-between flex-col-reverse sm:flex-row p-4 md:p-10 items-center text-center md:text-start"
+      >
+        <div class="data">
+          <h4 class="text-2xl font-bold mb-4">{{ cat.name }}</h4>
+          <a class="block hover:text-primary transition"
+            >Numbers Of Products :<span>17</span></a
+          >
+          <a class="block hover:text-primary transition"
+            >Number of sections :<span>17</span></a
+          >
+          <a
+            routerLink="/categories"
+            [queryParams]="{ cat: cat._id, df: 12, mkdfkfd: 234435 }"
+            class="underline text-primary hover:text-primary/60 transition"
+            >view all</a
+          >
+        </div>
+        <div class="img">
+          <a routerLink="/categories" [queryParams]="{ catName: cat._id }">
+            <img
+              [src]="cat.image"
+              class="size-[100px] sm:size-[250px] aspect-[1/1] rounded-full object-cover border-[3px] border-primary p-2"
+              [alt]="cat.slug"
+            />
+          </a>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+<!-- End Categories  section  -->
+<!-- Start Marquee Effect  -->
+<div class="Marquee-Effect">
+  <div class="marquee-container">
+    <span>Fresh Deliveries, Doorstep Convenience</span>
+    <span>Exclusive Deals, Popular Picks</span>
+    <span>Best Products, Best Prices</span>
+    <span>Instant Refresh, Fast Delivery</span>
+    <span>Quality, Convenience, Quick Delivery!</span>
+    <span>Fresh Deliveries, Doorstep Convenience</span>
+    <span>Quality, Convenience, Quick Delivery!</span>
+    <span>Fresh Deliveries, Doorstep Convenience</span>
+  </div>
+</div>
+<!-- End Marquee Effect  -->
+<!-- Start Popular Products section  -->
+
+<section class="Popular-product py-20">
+  <div class="container mx-auto">
+    <div class="title flex justify-between">
+      <h2 class="text-2xl md:text-4xl mb-4 font-bold">
+        Most Selling Products :
+      </h2>
+      <a
+        class="items-center gap-2 text-meuted hover:text-primary transition hidden md:flex"
+      >
+        see all Products <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="prod-container">
+      <owl-carousel-o [options]="productOptions">
+        @for (prod of productsData; track prod._id) {
+        @if(prod.priceAfterDiscount){
+        <ng-template carouselSlide>
+          <div class="card-container">
+            <app-product-card [product]="prod"></app-product-card>
+          </div>
+        </ng-template>
+        } }
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+<!-- End Popular Products section  -->
+<section
+  class="panner relative"
+  data-aos="fade-up"
+  data-aos-offset="400"
+  data-aos-duration="500"
+>
+  <div class="title h-full w-full flex justify-center items-center">
+    <h3
+      class="text-secondery text-5xl md:text-6xl font-bold"
+      data-aos="fade-right"
+      data-aos-delay="500"
+      data-aos-duration="500"
+    >
+      <span data-aos="fade-up" data-aos-delay="800" data-aos-duration="500"
+        >Today’s Special</span
+      >
+    </h3>
+  </div>
+  <div class="overlay absolute inset-0">
+    <div
+      data-aos="zoom-in"
+      data-aos-delay="1800"
+      data-aos-duration="500"
+      [pTooltip]="tooltipContent"
+      severity="success"
+      tooltipPosition="bottom"
+      class="showMore size-[30px] rounded-full hidden md:flex cursor-pointer justify-center items-center bg-white absolute end-1/2 bottom-1/5"
+    >
+      <i class="fa-solid fa-plus text-xl font-semibold"></i>
+    </div>
+    <ng-template #tooltipContent>
+      <div class="flex items-center flex-col gap-3">
+        <h4 class="text-xl font-bold capitalize">offer sale</h4>
+        <span> <b>visit</b> and shop</span>
+      </div>
+    </ng-template>
+    <div
+      data-aos="zoom-in"
+      data-aos-delay="1200"
+      data-aos-duration="500"
+      [pTooltip]="tooltipContent2"
+      severity="success"
+      tooltipPosition="top"
+      class="showMore size-[30px] rounded-full hidden md:flex cursor-pointer justify-center items-center bg-white absolute end-1/2 top-1/5"
+    >
+      <i class="fa-solid fa-plus text-xl font-semibold"></i>
+    </div>
+    <ng-template #tooltipContent2>
+      <div class="flex items-center flex-col gap-3">
+        <h4 class="text-xl font-bold capitalize">see all products</h4>
+        <span> <b>visit</b> and shop</span>
+      </div>
+    </ng-template>
+    <div
+      data-aos="zoom-in"
+      data-aos-delay="2100"
+      data-aos-duration="500"
+      [pTooltip]="tooltipContent2"
+      severity="success"
+      tooltipPosition="left"
+      class="showMore size-[30px] rounded-full hidden md:flex cursor-pointer justify-center items-center bg-white absolute end-2/3 top-1/2"
+    >
+      <i class="fa-solid fa-plus text-xl font-semibold"></i>
+    </div>
+    <ng-template #tooltipContent2>
+      <div class="flex items-center flex-col gap-3">
+        <h4 class="text-xl font-bold capitalize">see all products</h4>
+        <span> <b>visit</b> and shop</span>
+      </div>
+    </ng-template>
+    <div
+      data-aos="zoom-in"
+      data-aos-delay="1500"
+      data-aos-duration="500"
+      [pTooltip]="tooltipContent2"
+      severity="success"
+      tooltipPosition="right"
+      class="showMore size-[30px] rounded-full hidden md:flex cursor-pointer justify-center items-center bg-white absolute start-2/3 top-1/2"
+    >
+      <i class="fa-solid fa-plus text-xl font-semibold"></i>
+    </div>
+    <ng-template #tooltipContent2>
+      <div class="flex items-center flex-col gap-3">
+        <h4 class="text-xl font-bold capitalize">see all products</h4>
+        <span> <b>visit</b> and shop</span>
+      </div>
+    </ng-template>
+  </div>
+</section>
+<!-- Start Recent Atricles section  -->
+<section class="recent-articles bg-[#F3F7F2] py-10">
+  <div class="container mx-auto">
+    <h2 class="text-2xl capitalize md:text-4xl mb-7 font-bold">
+      top recent articles:
+    </h2>
+    <div class="grid gap-5 grid-cols-1 xl:grid-cols-[60%_1fr]">
+      <div>
+        <div
+          class="articla grid grid-cols-1 sm:grid-cols-[40%_1fr] overflow-hiddenrounded-md bg-white gap-4"
+        >
+          <div class="img overflow-hidden group hidden sm:block">
+            <img
+              src="/images/articale-1.jpg"
+              class="h-[412px] object-cover group-hover:scale-[1.2] transition-all duration-[1500ms]"
+              alt="articles one photo"
+            />
+          </div>
+          <div class="data px-5 py-8">
+            <span
+              class="padge w-fit block bg-meuted/50 text-white p-1.5 text-sm rounded-xl"
+            >
+              overview
+            </span>
+
+            <a
+              class="text-secondery my-10 block text-2xl xl:text-3xl hover:text-primary transition capitalize"
+            >
+              The best international and local brands available in the market
+            </a>
+            <p class="leading-loose text-meuted hover:text-black mb-4">
+              We're temporarily closed. Stylish fashion and smart electronics
+              await — stay tuned for the best looks, gadgets, and unbeatable
+              offers soon.
+            </p>
+            <a> by someone</a>
+          </div>
+        </div>
+      </div>
+      <div class="flex xl:flex-col justify-between gap-3">
+        <div
+          class="articla grid grid-cols-[40%_1fr] rounded-md overflow-hidden bg-white gap-4 items-center"
+        >
+          <div class="img overflow-hidden group">
+            <img
+              src="/images/articale-2.jpg"
+              class="h-[200px] object-cover group-hover:scale-[1.2] transition-all duration-[1500ms]"
+              alt="articles one photo"
+            />
+          </div>
+          <div class="data px-5 py-8">
+            <span
+              class="padge w-fit block bg-meuted/50 text-white p-1.5 text-sm rounded-xl"
+            >
+              overview
+            </span>
+
+            <a
+              class="text-secondery my-4 block hover:text-primary transition capitalize"
+            >
+              all brands
+            </a>
+          </div>
+        </div>
+        <div
+          class="articla grid grid-cols-[40%_1fr] rounded-md overflow-hidden bg-white gap-4 items-center"
+        >
+          <div class="img overflow-hidden group">
+            <img
+              src="/images/articale-3.jpg"
+              class="h-[200px] object-cover group-hover:scale-[1.2] transition-all duration-[1500ms]"
+              alt="articles one photo"
+            />
+          </div>
+          <div class="data px-5 py-8">
+            <span
+              class="padge w-fit block bg-meuted/50 text-white p-1.5 text-sm rounded-xl"
+            >
+              overview
+            </span>
+
+            <a
+              class="text-secondery my-4 block hover:text-primary transition capitalize"
+            >
+              The best international
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Recent Atricles section  -->
+<!-- Start Question section  -->
+
+<section
+  class="quisetion py-10 bg-[#F3F7F2]"
+  data-aos="fade-up"
+  data-aos-duration="300"
+  data-aos-offset="100"
+>
+  <div class="container mx-auto">
+    <h2 class="text-2xl md:text-4xlmb-4 font-bold">
+      Frequntly Asked Questions !
+    </h2>
+    <p class="text-meuted">
+      Have Question ? Check Out Our FAQ Section To Answers To All Commen
+      Question
+    </p>
+    <div class="qui-container grid grid-cols-1 lg:grid-cols-2 lg:gap-10 mt-6">
+      <p-accordion [value]="['0']">
+        <p-accordion-panel value="0" data-aos="fade-up" data-aos-duration="300">
+          <p-accordion-header class="py-6!"
+            >What payment methods are accepted at your
+            store?</p-accordion-header
+          >
+          <p-accordion-content>
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </p-accordion-content>
+        </p-accordion-panel>
+        <p-accordion-panel
+          value="1"
+          data-aos="fade-up"
+          data-aos-duration="300"
+          data-aos-delay="300"
+        >
+          <p-accordion-header class="py-6!"
+            >Can I return or exchange an item I've purchased from your online
+            store?</p-accordion-header
+          >
+          <p-accordion-content>
+            <p class="m-0">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+              eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci
+              velit, sed quia non numquam eius modi.
+            </p>
+          </p-accordion-content>
+        </p-accordion-panel>
+        <p-accordion-panel
+          value="2"
+          data-aos="fade-up"
+          data-aos-duration="300"
+          data-aos-delay="600"
+        >
+          <p-accordion-header class="py-6!"
+            >How long does it take to process and ship my
+            order?</p-accordion-header
+          >
+          <p-accordion-content>
+            <p class="m-0">
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui
+              blanditiis praesentium voluptatum deleniti atque corrupti quos
+              dolores et quas molestias excepturi sint occaecati cupiditate non
+              provident, similique sunt in culpa qui officia deserunt mollitia
+              animi, id est laborum et dolorum fuga. Et harum quidem rerum
+              facilis est et expedita distinctio. Nam libero tempore, cum soluta
+              nobis est eligendi optio cumque nihil impedit quo minus.
+            </p>
+          </p-accordion-content>
+        </p-accordion-panel>
+      </p-accordion>
+      <p-accordion [value]="['0']">
+        <p-accordion-panel
+          value="0"
+          data-aos="fade-up"
+          data-aos-duration="300"
+          data-aos-delay="900"
+        >
+          <p-accordion-header class="py-6!"
+            >How long does it take to process and ship my
+            order?</p-accordion-header
+          >
+          <p-accordion-content>
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </p-accordion-content>
+        </p-accordion-panel>
+        <p-accordion-panel
+          value="1"
+          data-aos="fade-up"
+          data-aos-duration="300"
+          data-aos-delay="1200"
+        >
+          <p-accordion-header class="py-6!"
+            >What payment methods are accepted at your
+            store?</p-accordion-header
+          >
+          <p-accordion-content>
+            <p class="m-0">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+              eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci
+              velit, sed quia non numquam eius modi.
+            </p>
+          </p-accordion-content>
+        </p-accordion-panel>
+        <p-accordion-panel
+          value="2"
+          data-aos="fade-up"
+          data-aos-duration="300"
+          data-aos-delay="1600"
+        >
+          <p-accordion-header class="py-6!"
+            >Can I return or exchange an item I've purchased from your online
+            store??</p-accordion-header
+          >
+          <p-accordion-content>
+            <p class="m-0">
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui
+              blanditiis praesentium voluptatum deleniti atque corrupti quos
+              dolores et quas molestias excepturi sint occaecati cupiditate non
+              provident, similique sunt in culpa qui officia deserunt mollitia
+              animi, id est laborum et dolorum fuga. Et harum quidem rerum
+              facilis est et expedita distinctio. Nam libero tempore, cum soluta
+              nobis est eligendi optio cumque nihil impedit quo minus.
+            </p>
+          </p-accordion-content>
+        </p-accordion-panel>
+      </p-accordion>
+    </div>
+  </div>
+</section>
+<!-- End Question section  -->

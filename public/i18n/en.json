@@ -1,0 +1,27 @@
+{
+
+    "navbar": {
+        "language" : "language",
+        "Midseason Sale: 20% Off — Limited Time Only" : "Midseason Sale: 20% Off — Limited Time Only",
+        "aboutUs" : "about Us",
+        "contactus" : "contactus",
+        "blog" : "blog",
+        "stor location " : "stor location",
+        "metro hyper " : "metro hyper",
+        "browse now " : "browse now",
+        "home" : "home",
+        "products" : "products",
+        "categories" : "categories",
+        "brands" : "brands",
+        "search here" : "search here",
+        "wishlist" : "wishlist",
+        "cart" : "cart",
+        "top porduct sold" : "top porduct sold" , 
+        "overview" : "overview" ,
+        "Categorie Side" : "categories Side" 
+    },
+    "home" :{
+
+    }
+
+}

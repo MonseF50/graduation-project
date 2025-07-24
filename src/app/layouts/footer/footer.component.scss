@@ -1,0 +1,7 @@
+form {
+  input[type="email"]:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}

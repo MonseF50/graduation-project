@@ -1,0 +1,81 @@
+<section class="all-oreders py-20">
+  <div class="container mx-auto">
+    <div class="title">
+      <h2 class="text-3xl font-bold">all orders done:</h2>
+    </div>
+    <div>
+      <p-accordion value="0">
+        @for (order of allOrdersData; track order._id) {
+        <p-accordion-panel [value]="$index">
+          <p-accordion-header>
+            <span> {{ $index + 1 }} : </span>
+            <span
+              class="id py-1.5 px-4 block bg-[#3178C6] text-white font-semibold rounded-md"
+            >
+              ID : {{ order.id }}
+            </span>
+            <span
+              class="type py-1.5 px-5 block text-white font-semibold rounded-md"
+              [class]="
+                order.paymentMethodType == 'cash'
+                  ? 'bg-primary'
+                  : 'bg-secondery'
+              "
+              >Type: {{ order.paymentMethodType }}
+            </span>
+            <span> User: {{ order.user.name }} </span>
+            <span> {{ order.user.email }} </span>
+            <span> Total Price : {{ order.totalOrderPrice }} </span>
+            <span
+              class="delivred py-1.5 px-4 block bg-red-600 text-white font-semibold rounded-md"
+              >Delivred: @if(order.isDelivered == false){
+              <span> Not Yet</span>
+              }@else {
+              <span> Yes </span>
+              }
+            </span>
+          </p-accordion-header>
+          <p-accordion-content>
+            <div class="itmes">
+              <owl-carousel-o [options]="customOptions">
+                @for (prod of order.cartItems; track prod._id) {
+                <ng-template carouselSlide>
+                  <div class="flex flex-col items-center gap-4 relative">
+                    <img
+                      [src]="prod.product.imageCover"
+                      [alt]="prod.product.title"
+                      class="size-[200px] block object-contain"
+                    />
+                    <p>{{ prod.product.title.split(" ", 2).join(" ") }}</p>
+                    <div class="stars flex gap-1">
+                      <ng-container
+                        *ngFor="
+                          let star of getStarArray(prod.product.ratingsAverage)
+                        "
+                      >
+                        <i
+                          [ngClass]="
+                            star
+                              ? 'pi pi-star-fill text-yellow-500'
+                              : 'pi pi-star text-gray-400'
+                          "
+                        ></i>
+                      </ng-container>
+                    </div>
+                    <p>
+                      <span>Count :</span>
+                      <span> {{ prod.count }} </span>
+                    </p>
+                    <span> Price : {{ prod.price }} </span>
+                  </div>
+                </ng-template>
+                }
+              </owl-carousel-o>
+            </div>
+          </p-accordion-content>
+        </p-accordion-panel>
+        }
+      </p-accordion>
+    </div>
+  </div>
+</section>
