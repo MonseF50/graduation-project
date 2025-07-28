@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { ToastService } from './core/services/toast/toast.service';
+import { TosterngService } from './core/services/toster/tosterng.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,8 @@ import { ToastService } from './core/services/toast/toast.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [MessageService]
-
 })
 export class AppComponent {
   title = 'e-commerce';
-  constructor(private messageService: MessageService, private toastService: ToastService) { }
+  constructor(private tosterngService: TosterngService) { }
 }

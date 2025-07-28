@@ -13,7 +13,7 @@ export class ProductsService {
 
   constructor(private readonly httpclient: HttpClient) { }
 
-  getProducts(catID?: string, page?: number, minPrice?: number, maxPrice?: number, brand?: string, sort: string = 'price'): Observable<any> {
+  getProducts(catID?: string, page?: number, minPrice?: number, maxPrice?: number, sort: string = 'price'): Observable<any> {
     let params = new HttpParams().set('sort', sort).set('limit', '12')
     if (catID != undefined) {
       params = params.set('category[in]', catID)
@@ -27,9 +27,7 @@ export class ProductsService {
     if (maxPrice != undefined) {
       params = params.set('price[lte]', maxPrice.toString())
     }
-    if (brand != undefined) {
-      params = params.set('brand', brand)
-    }
+
     return this.httpclient.get(`${environment.baseUrl}/products`, { params })
   }
   getSpecificProducts(id: string | number): Observable<any> {

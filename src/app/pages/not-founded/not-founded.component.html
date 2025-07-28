@@ -1,1 +1,28 @@
-<p>not-founded works!</p>
+<app-navbar [isLogged]="true"></app-navbar>
+<div class="overlay">
+  <div class="container mx-auto h-screen px-10">
+    <div class="grid grid-cols-1 md:grid-cols-[60%_40%] h-full">
+      <div class="gotoshop flex flex-col justify-center">
+        <div>
+          <span class="text-6xl text-secondery">
+            <span class="text-7xl font-[600]">O</span>ops!
+          </span>
+          <span
+            class="capitalize text-5xl text-white block mt-6 font-bold leading-[1.5]"
+            >we can't seem find the page <br />
+            you're looking for ,
+          </span>
+        </div>
+        <button
+          routerLink="/home"
+          class="font-semibold w-fit block mt-8 cursor-pointer bg-primary hover:bg-secondery transition py-3 px-8 rounded-lg text-white text-2xl text-nowrap"
+        >
+          Go To Shop
+        </button>
+      </div>
+      <div class="img flex items-center">
+        <img src="/images/error.svg" class="w-full" alt="not found image" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <!-- message success -->
 <div class="toast">
-  <p-toast position="top-right" />
+  <p-toast baseZIndex="5000" position="top-right" />
 </div>
 
 <div class="card group" data-aos-anchor-placement="center-bottom">
@@ -39,7 +39,6 @@
       </a>
     </div>
   </div>
-  `
   <div class="card-body text-center mt-2 px-5">
     <h6 class="text-sm text-meuted">{{ product?.brand?.name }}</h6>
     <h4 class="font-semibold">
@@ -63,17 +62,15 @@
       </p>
 
       <div class="stars flex gap-1">
-        <ng-container
-          *ngFor="let star of getStarArray(product?.ratingsAverage!)"
-        >
-          <i
-            [ngClass]="
-              star
-                ? 'pi pi-star-fill text-yellow-500'
-                : 'pi pi-star text-gray-400'
-            "
-          ></i>
-        </ng-container>
+        @for (star of getStarArray(product?.ratingsAverage!); track $index) {
+        <i
+          [ngClass]="
+            star
+              ? 'pi pi-star-fill text-yellow-500'
+              : 'pi pi-star text-gray-400'
+          "
+        ></i>
+        }
       </div>
     </div>
     <!-- <div class="rangeAvalabal">

@@ -12,6 +12,7 @@ import { loadingInterceptor } from './core/interceptors/loading/loading.intercep
 import { NgxSpinnerModule } from "ngx-spinner";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MessageService } from 'primeng/api';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/i18n/', '.json');
@@ -40,7 +41,8 @@ export const appConfig: ApplicationConfig = {
         darkModeSelector: false || 'none',
       }
     }
-  })
+  }),
+    MessageService
   ]
 
 };

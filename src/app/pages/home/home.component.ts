@@ -95,6 +95,7 @@ export class HomeComponent implements OnInit {
     items: 1,
     nav: false
   }
+  //!  object of product in the pouplar section 
   productOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -107,6 +108,7 @@ export class HomeComponent implements OnInit {
     navSpeed: 700,
     margin: 20,
     navText: ['', ''],
+
     responsive: {
       0: {
         items: 1

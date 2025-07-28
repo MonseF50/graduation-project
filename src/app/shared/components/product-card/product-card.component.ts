@@ -2,19 +2,18 @@ import { Component, inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { IProducts } from '../../interfaces/iproducts';
 import { RouterLink } from '@angular/router';
 import AOS from 'aos';
-import { isPlatformBrowser, NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ProgressBar } from 'primeng/progressbar';
 import { CartService } from '../../../core/services/cart/cart.service';
 import { ToastService } from '../../../core/services/toast/toast.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
-import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
-import { finalize } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { WishListService } from '../../../core/services/wishList/wish-list.service';
-
+import { TosterngService } from '../../../core/services/toster/tosterng.service';
 @Component({
   selector: 'app-product-card',
-  imports: [RouterLink, Toast, NgxSpinnerComponent, NgClass, NgIf, NgFor],
+  imports: [RouterLink, Toast, NgClass],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss',
   providers: [MessageService]
@@ -27,6 +26,7 @@ export class ProductCardComponent {
   private cartService = inject(CartService)
   private ngxSpinner = inject(NgxSpinnerService)
   private wishListService = inject(WishListService)
+  private tosterngService = inject(TosterngService)
   messageAdd: string | null = null
   // porperity to make spinner during the product add 
   isProductAdd: boolean = false
@@ -46,13 +46,12 @@ export class ProductCardComponent {
       next: (res) => {
         // porperity to make spinner off 
         this.isProductAdd = false
-        console.log(res);
-        this.showSuccess(res.message)
+        this.messageAdd = res.message
+        this.showSuccess()
       },
       error: (err) => {
         // porperity to make spinner off 
         this.isProductAdd = false
-        console.log(err);
       }
     })
   }
@@ -66,30 +65,28 @@ export class ProductCardComponent {
     if (element.classList.contains('bg-primary')) {
       this.wishListService.addProductToWishList(id).subscribe({
         next: (res) => {
-          this.showSuccess(res.message)
-          console.log(res);
+          this.messageAdd = res.message
+          this.showSuccess()
         },
         error: (err) => {
-          console.log(err);
-
         }
       })
     } else {
       this.wishListService.removeProductFromWishlist(id).subscribe({
         next: (res) => {
-          this.showSuccess(res.message)
-          console.log(res);
+          this.messageAdd = res.message
+          this.showSuccess()
         }, error: (err) => {
-          console.log(err);
-
         }
       })
     }
   }
-
   // * method to show the success message after add the porduct to cart and wisht and remove form the wish list 
-  showSuccess(message: string) {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: message });
+  showSuccess() {
+    if (this.messageAdd != null) {
+      this.tosterngService.showSuccess('Sucess', this.messageAdd)
+      // this.messageService.add({ severity: 'success', summary: 'Success', detail: this.messageAdd });
+    }
   }
   getStarArray(rating: number): boolean[] {
     const fullStars = Math.round(rating);

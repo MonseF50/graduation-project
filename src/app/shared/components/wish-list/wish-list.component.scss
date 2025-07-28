@@ -1,0 +1,8 @@
+::ng-deep {
+  .p-drawer-left {
+    z-index: 9999999999999 !important;
+  }
+  .p-overlay-mask-enter {
+    z-index: 999999 !important ;
+  }
+}

@@ -1,7 +1,7 @@
-<div #navbar class="absolute start-0 end-0 top-0 z-30">
+<div #navbar class="absolute start-0 end-0 top-0">
   <div class="bg-primary py-2">
     <div class="container mx-auto flex justify-between items-center">
-      <div class="text-white items-center gap-3 flex z-50">
+      <div class="text-white items-center gap-3 flex">
         <app-language></app-language>
         <p class="hidden md:block">
           <i class="fa-solid fa-money-bill-wave"></i>
@@ -46,7 +46,7 @@
   <nav [class.fixed-top]="isScrolled" class="bg-white border-gray-200 relative">
     <div class="container mx-auto">
       <div class="flex items-center py-3">
-        <a href="#" class="flex items-center gap-3">
+        <a routerLink="/home" class="flex items-center gap-3">
           <img src="/logo.png" class="w-[50px]" alt="shop logo" />
           <h2 class="font-bold hidden sm:block">Metro Hyper</h2>
         </a>
@@ -315,12 +315,6 @@
             </form>
           </div>
           <div class="flex items-center gap-3">
-            <div
-              class="userData border-black/30 inline-flex gap-2 cursor-pointer items-center border-e pe-3 text-black/70 hover:text-black transition"
-            >
-              <i class="fa-regular fa-circle-user text-2xl"></i>
-              <span class="font-semibold"> {{ userName }} </span>
-            </div>
             <app-wish-list></app-wish-list>
             <a
               routerLink="/cart"
@@ -335,7 +329,7 @@
               class="inline-flex items-center text-black/70 hover:text-black transition"
             >
               <i class="fa-solid fa-right-from-bracket text-2xl"></i>
-              <span class="ms-2 font-semibold hidden md:block">Log Out </span>
+              <span class="ms-2 font-semibold hidden md:block">Log Out</span>
             </a>
           </div>
         </div>

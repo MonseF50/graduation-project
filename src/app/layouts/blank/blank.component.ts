@@ -64,6 +64,11 @@ export class BlankComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.callCartProduct()
+  }
+  // * method to call cart api andupdate toe porduct count 
+
+  callCartProduct(): void {
     this.cartService.getLoggedUerCart().subscribe({
       next: (res) => {
         this.cartData = res.data
@@ -73,7 +78,6 @@ export class BlankComponent implements OnInit {
       }
     })
   }
-
   // * method to call cart api andupdate toe porduct count 
   updateProductQuinty(id: string, count: any): void {
     this.cartService.updateCartProductQuantity(id, count).subscribe({
@@ -97,5 +101,9 @@ export class BlankComponent implements OnInit {
         }
       }
     )
+  }
+  getCartProduct(): void {
+    this.callCartProduct()
+    this.visible = true
   }
 }

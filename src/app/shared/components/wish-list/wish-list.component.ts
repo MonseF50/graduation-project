@@ -20,7 +20,7 @@ export class WishListComponent implements OnInit {
     this.wishListService.getLoggedUserWishList().subscribe({
       next: (res) => {
         this.wishListProducts = res.data
-        // console.log(this.wishListProducts);
+        console.log(this.wishListProducts);
       },
       error: (err) => {
         console.log(err);

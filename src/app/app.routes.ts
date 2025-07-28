@@ -88,6 +88,7 @@ export const routes: Routes = [
     },
     {
         path: '**',
+        canActivate: [noauthGuard],
         loadComponent: () => import('./pages/not-founded/not-founded.component').then((comp) => comp.NotFoundedComponent),
         title: 'Not Founded'
     }

@@ -1,43 +1,39 @@
-import { ProductsService } from './../../core/services/products/products.service';
+import { ProductCardComponent } from '../product-card/product-card.component';
 import { Component, ElementRef, inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { CategoriesService } from '../../core/services/categories/categories.service';
 import { max, Subscription } from 'rxjs';
-import { ICategries } from '../../shared/interfaces/Icategries';
 import { CarouselComponent } from 'ngx-owl-carousel-o';
 import { Tooltip } from 'primeng/tooltip';
-import { ProductCardComponent } from "../../shared/components/product-card/product-card.component";
-import { IProducts } from '../../shared/interfaces/iproducts';
 import { FormsModule } from '@angular/forms';
 import { Slider } from 'primeng/slider';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { AccordionModule } from 'primeng/accordion';
 import { Select } from 'primeng/select';
-import { MySeclect } from '../../shared/interfaces/my-seclect';
-import { PorductsComponent } from "../porducts/porducts.component";
-import { SharedProductsComponent } from "../../shared/components/shared-products/shared-products.component";
+import { ProductsService } from '../../../core/services/products/products.service';
+import { CategoriesService } from '../../../core/services/categories/categories.service';
+import { ICategries } from '../../interfaces/Icategries';
+import { IProducts } from '../../interfaces/iproducts';
+import { MySeclect } from '../../interfaces/my-seclect';
 
 
 @Component({
-  selector: 'app-categories',
+  selector: 'app-shared-products',
   imports: [
+    ProductCardComponent,
     RouterLink,
     CarouselModule,
     Select,
     Tooltip,
     AccordionModule,
-    ProductCardComponent,
     FormsModule,
     Slider,
-    PaginatorModule,
-    PorductsComponent,
-    SharedProductsComponent
+    PaginatorModule
   ],
-  templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss'
+  templateUrl: './shared-products.component.html',
+  styleUrl: './shared-products.component.scss'
 })
-export class CategoriesComponent implements OnInit {
+export class SharedProductsComponent {
   @ViewChild('owlCarsouel') owlCarsouel!: CarouselComponent
   @ViewChild('productContainer') productContainer!: ElementRef<HTMLElement>
   private renderer2 = inject(Renderer2)
@@ -182,43 +178,5 @@ export class CategoriesComponent implements OnInit {
   }
   // * method to get the prduct brand to display it in the megamenue
   getPrductsByBrand() {
-  }
-  // owl carousel custom object 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    pullDrag: false,
-    dots: true,
-    margin: 30,
-    navSpeed: 700,
-    navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'],
-    responsive: {
-      0: {
-        touchDrag: true,
-        mouseDrag: true,
-        items: 1
-      },
-      567: {
-        touchDrag: true,
-        mouseDrag: true,
-        items: 2
-      },
-      768: {
-        touchDrag: false,
-        mouseDrag: true,
-        items: 3
-      },
-      992: {
-        touchDrag: false,
-        mouseDrag: true,
-        items: 4
-      },
-      1200: {
-        touchDrag: false,
-        mouseDrag: true,
-        items: 6
-      }
-    },
-    nav: false
   }
 }

@@ -1,0 +1,147 @@
+<section class="products bg-[#F3F7F2]" id="porducts-section" #productContainer>
+  <div class="container mx-auto">
+    <div
+      class="prod-container grid grid-cols-1 lg:grid-cols-[20%_1fr] gap-10 py-10"
+    >
+      <div class="filter-disctop hidden lg:block relative">
+        <div class="fillter-box sticky top-20">
+          <div class="card flex justify-center">
+            <p-accordion
+              value="0"
+              class="w-full"
+              expandIcon="pi pi-plus"
+              collapseIcon="pi  pi-minus"
+            >
+              <p-accordion-panel value="1" class="bg-transparent!">
+                <p-accordion-header>
+                  <h4 class="text-xl capitalize">fillter by: Price</h4>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <div class="filter-by-price mb-6">
+                    <p class="mb-3 text-xl">
+                      form {{ rangeValues[0] }} to {{ rangeValues[1] }}
+                      <small>EGY</small>
+                    </p>
+                    <div class="w-8/12 ps-3">
+                      <p-slider
+                        [min]="0"
+                        [max]="5000"
+                        [step]="0"
+                        [(ngModel)]="rangeValues"
+                        [range]="true"
+                        (onChange)="updateRange()"
+                      />
+                    </div>
+                    <button
+                      (click)="getProductByPrice()"
+                      class="block w-fit py-1.5 px-8 mt-8 cursor-pointer rounded-md text-xl text-white bg-primary hover:bg-secondery transition"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+              <p-accordion-panel value="2">
+                <p-accordion-header>
+                  <h4 class="text-xl capitalize">fillter by: Categorie</h4>
+                </p-accordion-header>
+                <p-accordion-content class="bg-transparent!">
+                  <div class="filter-by-categore mb-6">
+                    <div class="categorie">
+                      <p
+                        (click)="callProducts()"
+                        class="p-2 hover:bg-gray-200/40 transition text-lg cursor-pointer"
+                      >
+                        All Products
+                      </p>
+                      @for (cat of categoriesData; track cat._id) {
+                      <p
+                        (click)="categoreFilter(cat._id, cat.name)"
+                        class="p-2 hover:bg-gray-200/40 transition text-lg cursor-pointer"
+                      >
+                        {{ cat.name }}
+                      </p>
+                      }
+                    </div>
+                  </div>
+                  `
+                </p-accordion-content>
+              </p-accordion-panel>
+
+              <p-accordion-panel value="3">
+                <p-accordion-header>
+                  <h4 class="text-xl capitalize">fillter by: Brand</h4>
+                </p-accordion-header>
+                <p-accordion-content class="bg-transparent!">
+                  <div class="filter-by-brnad">
+                    <div class="brands"></div>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+            </p-accordion>
+          </div>
+        </div>
+      </div>
+      <div class="filter-mobile block lg:hidden"></div>
+      <!--! maket fillter in mobile with primng with  Drower -->
+      <div>
+        <div class="title flex items-baseline justify-between">
+          <div class="title flex gap-4 mb-10 items-baseline">
+            <h5 class="text-4xl">{{ categoreFilterName }}</h5>
+            <span class="text-black/60"> ( {{ productsNumber }} )</span>
+          </div>
+          <div class="flex gap-5">
+            <div class="limt">
+              <span class="text-xl text-meuted me-3">Show:</span>
+              <p-select
+                [options]="limitOptions"
+                [(ngModel)]="selectedLimitOptions"
+                optionLabel="name"
+                placeholder="12"
+                class="w-22 text-black!"
+              />
+            </div>
+            <div class="sort">
+              <p-select
+                [options]="sortOptions"
+                [(ngModel)]="selectedSortOptions"
+                optionLabel="name"
+                placeholder="Default Sort"
+                class="w-36 text-black!"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          #porductBox
+          class="display-product bg-white p-10 grid empty:grid-cols-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 relative"
+        >
+          @for (prod of productsData; track prod._id) {
+          <div
+            data-aos="fade-up"
+            data-aos-duration="400"
+            data-aos-offset="300"
+            data-aos-once="true"
+          >
+            <app-product-card [product]="prod"></app-product-card>
+          </div>
+          }@empty {
+          <p
+            class="text-2xl text-center capitalize absolute inset-0 flex justify-center items-center"
+          >
+            thers is no productd with this categor or price range
+          </p>
+          }
+        </div>
+        <div class="pagenation">
+          <p-paginator
+            (onPageChange)="onPageChange($event)"
+            [first]="first"
+            [rows]="rows"
+            [totalRecords]="productsNumber"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

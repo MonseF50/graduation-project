@@ -1,0 +1,36 @@
+.overlay {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    bottom: 25%;
+    left: 50%;
+    background-color: var(--color-primary);
+    opacity: 0.25;
+    z-index: -1;
+    transform: rotate(-8deg) translateX(-50%);
+    -webkit-transform: rotate(-8deg) translateX(-50%);
+    -moz-transform: rotate(-8deg) translateX(-50%);
+    -ms-transform: rotate(-8deg) translateX(-50%);
+    -o-transform: rotate(-8deg) translateX(-50%);
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    @media screen and (max-width: 767px) {
+      left: 0px;
+      bottom: 10%;
+      width: 100%;
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+    }
+  }
+}

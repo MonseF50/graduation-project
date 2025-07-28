@@ -5,5 +5,13 @@
   <i class="fa-regular fa-heart text-2xl"></i>
   <span class="ms-2 font-semibold hidden md:block">wishlist </span>
 </a>
-<!-- drawer to wish list -->
-<p-drawer header="Wist List" [(visible)]="visible" position="left"> </p-drawer>
+<!--drawer to wish list -->
+<div class="wishlist-container">
+  <p-drawer
+    header="Wist List"
+    [(visible)]="visible"
+    position="left"
+    [style]="{ 'z-index': '9999999999' }"
+  >
+  </p-drawer>
+</div>
