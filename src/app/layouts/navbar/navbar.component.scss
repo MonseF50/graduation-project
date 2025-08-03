@@ -3,7 +3,7 @@
   top: 0px;
   left: 0px;
   right: 0px;
-  z-index: 9999999;
+  z-index: 999;
 }
 form {
   input {
@@ -18,7 +18,7 @@ form {
 nav {
   .browse {
     position: relative;
-    z-index: 9999;
+    z-index: 101;
     .overlay-black {
       display: none;
       z-index: -1;

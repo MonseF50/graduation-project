@@ -2,7 +2,15 @@
   (click)="visible = true"
   class="border-black/30 inline-flex items-center border-e-[1px] pe-3 text-black/70 hover:text-black transition"
 >
-  <i class="fa-regular fa-heart text-2xl"></i>
+  <span class="relative pe-2">
+    <i class="fa-regular fa-heart text-2xl"></i>
+
+    <span
+      class="absolute -top-1/2 end-0 py-1 size-[20px] flex justify-center items-center border border-green-800 bg-green-400 text-white rounded-full text-[12px]"
+    >
+      {{ "0" }}
+    </span>
+  </span>
   <span class="ms-2 font-semibold hidden md:block">wishlist </span>
 </a>
 <!--drawer to wish list -->

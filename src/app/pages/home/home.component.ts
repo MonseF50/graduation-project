@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     })
   }
   startCountdown() {
-    const targetDate = new Date('2025-08-01').getTime();
+    const targetDate = new Date('2025-09-01').getTime();
 
     this.intervalId = setInterval(() => {
       const now = new Date().getTime();

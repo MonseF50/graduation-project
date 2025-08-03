@@ -16,6 +16,7 @@ import { PanelMenu } from 'primeng/panelmenu';
 import { WishListComponent } from "../../shared/components/wish-list/wish-list.component"
 import { LanguageComponent } from "../../shared/components/language/language.component";
 import { TranslatePipe } from '@ngx-translate/core';
+import { CartService } from '../../core/services/cart/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -41,6 +42,7 @@ export class NavbarComponent implements OnInit {
   private authService = inject(AuthService)
   private productsServices = inject(ProductsService)
   private categoriesService = inject(CategoriesService)
+  private cartService = inject(CartService)
   private router = inject(Router)
   private Id = inject(PLATFORM_ID)
   porductSubscribtion!: Subscription
@@ -53,6 +55,7 @@ export class NavbarComponent implements OnInit {
   IsPrductMegaMenueShow: boolean = false
   isNavbarOverlayShow: boolean = false
   userName: string | null = null
+  cartproductNumber: number = 0
   callProduct() {
     this.productsServices.getProducts().subscribe({
       next: (res) => {
@@ -72,14 +75,12 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
-
-
-
   ngOnInit(): void {
     this.callProduct()
     this.callCategories()
     this.NavbarMobileContent()
     this.getUserData()
+    this.getCartDetails()
   }
   // * Listener to add class fixed top to the navbar if user scroll
   @HostListener('window:scroll', ['$event']) onScroll(): void {
@@ -221,6 +222,14 @@ export class NavbarComponent implements OnInit {
   getUserData() {
     this.userName = this.sharedvalueService.userData?.name!
     // console.log(this.sharedvalueService.userData?.name);
+  }
+  getCartDetails() {
+    this.cartService.cartProdurctsNumber.subscribe({
+      next: (value) => {
+        console.log(value);
+        this.cartproductNumber = value
+      }
+    })
   }
 }
 

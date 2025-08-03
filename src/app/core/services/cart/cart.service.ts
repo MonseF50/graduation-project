@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
@@ -9,7 +9,13 @@ import { StarIcon } from 'primeng/icons';
 })
 export class CartService {
 
-  constructor(private httpClient: HttpClient) { }
+  cartProdurctsNumber: BehaviorSubject<number> = new BehaviorSubject(0)
+  productsCartPrice: BehaviorSubject<number> = new BehaviorSubject(0)
+
+
+  constructor(private httpClient: HttpClient) {
+
+  }
 
 
   // ? method to call api with the token and porduct id and add porduct to cart 
@@ -18,13 +24,11 @@ export class CartService {
       {
         "productId": Id
       },
-
     )
   }
   // ? method to call api with the token to get all porduct in the cart 
   getLoggedUerCart(): Observable<any> {
     return this.httpClient.get(`${environment.baseUrl}/cart`,
-
     )
   }
   updateCartProductQuantity(Id: string, count: any): Observable<any> {
@@ -32,7 +36,6 @@ export class CartService {
       {
         "count": count
       },
-
     )
   }
   deleteSpecificProduct(Id: string): Observable<any> {
