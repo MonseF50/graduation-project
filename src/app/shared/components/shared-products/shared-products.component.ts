@@ -142,35 +142,27 @@ export class SharedProductsComponent {
     if (catName) {
       this.categoreFilterName = catName
     }
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    this.goUp(element)
   }
 
   // *method to filter product by price with the range
   getProductByPrice() {
     const element = this.productContainer.nativeElement
     this.callProducts(this.categoreId, this.currentPage, this.minValue, this.maxValue)
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    this.goUp(element)
   }
   // method to changet the value of the page number 
   onPageChange(event: PaginatorState) {
     const element = this.productContainer.nativeElement
-
     this.first = event.first ?? 0;
     this.rows = event.rows ?? 10;
     this.currentPage = Number(event?.page) + 1
     this.callProducts(undefined, this.currentPage, this.minValue, this.maxValue)
-    if (element) {
-      element.scrollIntoView({
+    this.goUp(element)
+  }
+  goUp(ele: HTMLElement): void {
+    if (ele) {
+      ele.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });

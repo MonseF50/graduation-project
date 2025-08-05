@@ -44,6 +44,7 @@ export class CartComponent implements OnInit {
       {
         next: (res) => {
           this.cartData = res.data
+          this.cartService?.cartProdurctsNumber.next(res.numOfCartItems)
         },
         error: (err) => {
           console.log(err);
@@ -56,6 +57,7 @@ export class CartComponent implements OnInit {
       {
         next: (res) => {
           if (res.message == 'success') {
+            this.cartService?.cartProdurctsNumber.next(0)
             this.cartData = null
           }
         },

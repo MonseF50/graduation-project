@@ -4,13 +4,9 @@
     <h4 class="mb-5">
       You are out of time! Checkout now to avoid losing your order!
     </h4>
-    <div
-      class="cart-product-container grid grid-cols-1 xl:grid-cols-[1fr_40%] pt-6 gap-10 xl:gap-16"
-    >
+    <div class="cart-product-container grid grid-cols-1 xl:grid-cols-[1fr_40%] pt-6 gap-10 xl:gap-16">
       <div>
-        <div
-          class="grid grid-cols-[30%_10%_20%_20%_10%_10%] border-b border-black/50 mb-5 text-center"
-        >
+        <div class="grid grid-cols-[30%_10%_20%_20%_10%_10%] border-b border-black/50 mb-5 text-center">
           <p class="text-start pb-5 uppercase">product</p>
           <p class="pb-5 uppercase">price</p>
           <p class="pb-5 uppercase">categore</p>
@@ -20,14 +16,9 @@
         @if (cartData!=null) { @for (prod of cartData.products; track prod._id)
         {
         <div
-          class="poduct-details grid grid-cols-[30%_10%_20%_20%_10%_10%] mb-4 text-center border-b border-black/10 pb-4"
-        >
+          class="poduct-details grid grid-cols-[30%_10%_20%_20%_10%_10%] mb-4 text-center border-b border-black/10 pb-4">
           <div class="product flex items-center gap-4">
-            <img
-              [src]="prod.product.imageCover"
-              [alt]="prod.product.title"
-              class="size-[100px] block"
-            />
+            <img [src]="prod.product.imageCover" [alt]="prod.product.title" class="size-[100px] block" />
             <p class="max-w-1/3">
               {{ prod.product.title.split(" ", 4).join(" ") }}
             </p>
@@ -39,52 +30,33 @@
             {{ prod.product.category.name }}
           </div>
           <div class="quantiy flex justify-center items-center">
-            <span
-              (click)="updateProductQuinty(prod.product._id, prod.count + 1)"
-              class="border border-black/10 p-3 cursor-pointer"
-              >+</span
-            >
+            <span (click)="updateProductQuinty(prod.product._id, prod.count + 1)"
+              class="border border-black/10 p-3 cursor-pointer">+</span>
             <span class="border border-black/10 p-3">
               {{ prod.count }}
             </span>
-            <span
-              (click)="updateProductQuinty(prod.product._id, prod.count - 1)"
-              class="border border-black/10 p-3 cursor-pointer"
-              >-</span
-            >
+            <span (click)="updateProductQuinty(prod.product._id, prod.count - 1)"
+              class="border border-black/10 p-3 cursor-pointer">-</span>
           </div>
           <div class="subtotal flex justify-center items-center">
             {{ prod.price * prod.count }}
           </div>
           <div class="icon flex justify-center items-center text-2xl">
-            <i
-              (click)="deleteProduct(prod.product._id)"
-              class="fa-solid fa-trash-can hover:text-red-600 cursor-pointer"
-            ></i>
+            <i (click)="deleteProduct(prod.product._id)"
+              class="fa-solid fa-trash-can hover:text-red-600 cursor-pointer"></i>
           </div>
         </div>
         }}
         <div class="clear-code flex justify-between items-baseline">
           <div class="input">
             <form class="flex">
-              <input
-                type="text"
-                pInputText
-                placeholder="copon code"
-                class="rounded-none!"
-              />
-              <input
-                type="submit"
-                value="code"
-                class="text-white bg-primary hover:bg-secondery p-1.5"
-              />
+              <input type="text" pInputText placeholder="copon code" class="rounded-none!" />
+              <input type="submit" value="code" class="text-white bg-primary hover:bg-secondery p-1.5" />
             </form>
           </div>
           <div class="clear">
-            <button
-              (click)="clearCart()"
-              class="text-white cursor-pointer bg-primary hover:bg-secondery transition px-5 py-2 rounded-lg"
-            >
+            <button (click)="clearCart()"
+              class="text-white cursor-pointer bg-primary hover:bg-secondery transition px-5 py-2 rounded-lg">
               clear cart
             </button>
           </div>
@@ -95,9 +67,7 @@
           <h4 class="text-2xl border-b border-black/20 mb-8 pb-4">
             cart total
           </h4>
-          <p
-            class="flex justify-between items-baseline text-xl mb-5 text-meuted border-b border-black/20"
-          >
+          <p class="flex justify-between items-baseline text-xl mb-5 text-meuted border-b border-black/20">
             <span>subtotal</span>
             <span>{{ cartData.totalCartPrice }}</span>
           </p>
@@ -106,55 +76,32 @@
             <span>{{ cartData.totalCartPrice }}</span>
           </p>
           <div class="way-of-payment flex justify-between mb-5 items-center">
-            <button
-              routerLink="/checkOut"
-              [queryParams]="{ t: 'cash', cartId: cartData._id }"
-              class="uppercase font-semibold w-2/5 py-2 bg-primary rounded-sm text-white transition hover:bg-secondery cursor-pointer"
-            >
+            <button routerLink="/checkOut" [queryParams]="{ t: 'cash', cartId: cartData._id }"
+              class="uppercase font-semibold w-2/5 py-2 bg-primary rounded-sm text-white transition hover:bg-secondery cursor-pointer">
               Payment in cash
             </button>
-            <button
-              routerLink="/checkOut"
-              [queryParams]="{ t: 'visa', cartId: cartData._id }"
-              class="uppercase font-semibold w-2/5 py-2 bg-primary rounded-sm text-white transition hover:bg-secondery cursor-pointer"
-            >
+            <button routerLink="/checkOut" [queryParams]="{ t: 'visa', cartId: cartData._id }"
+              class="uppercase font-semibold w-2/5 py-2 bg-primary rounded-sm text-white transition hover:bg-secondery cursor-pointer">
               Payment by visa
             </button>
           </div>
-          <button
-            class="uppercase font-semibold w-4/5 mx-auto block py-2 bg-secondery cursor-pointer rounded-sm text-white transition hover:bg-primary"
-          >
+          <button routerLink="/products"
+            class="uppercase font-semibold w-4/5 mx-auto block py-2 bg-secondery cursor-pointer rounded-sm text-white transition hover:bg-primary">
             continue shopping
           </button>
-          <div
-            class="payment border border-black/20 p-6 mt-10 rounded-md relative mb-5"
-          >
-            <h5
-              class="absolute -top-1/2 translate-y-1/2 w-11/12 pt-4 bg-white text-center mx-auto"
-            >
+          <div class="payment border border-black/20 p-6 mt-10 rounded-md relative mb-5">
+            <h5 class="absolute -top-1/2 translate-y-1/2 w-11/12 pt-4 bg-white text-center mx-auto">
               Guaranteed <span class="text-primary">safe</span> checkout
             </h5>
             <div class="parteners flex items-center gap-3 justify-center">
               <a>
-                <img
-                  src="/images/amazon-pay.png"
-                  class="w-[60px]"
-                  alt="amazon pay "
-                />
+                <img src="/images/amazon-pay.png" class="w-[60px]" alt="amazon pay " />
               </a>
               <a>
-                <img
-                  class="w-[60px]"
-                  src="/images/American-Express-Color.png"
-                  alt="american express"
-                />
+                <img class="w-[60px]" src="/images/American-Express-Color.png" alt="american express" />
               </a>
               <a>
-                <img
-                  src="/images/mastercard.webp"
-                  class="w-[60px]"
-                  alt="mastercard"
-                />
+                <img src="/images/mastercard.webp" class="w-[60px]" alt="mastercard" />
               </a>
               <a>
                 <img src="/images/paypal.png" class="w-[60px]" alt="paypal" />
@@ -177,10 +124,8 @@
     We invite you to get acquainted with an assortment of our shop. Surely you
     can find something for yourself!
   </p>
-  <a
-    routerLink="/products"
-    class="text-white block bg-primary hover:bg-secondery transition py-1.5 px-4 w-fit rounded-sm mx-auto"
-    >Return To Shop</a
-  >
+  <a routerLink="/products"
+    class="text-white block bg-primary hover:bg-secondery transition py-1.5 px-4 w-fit rounded-sm mx-auto">Return To
+    Shop</a>
 </div>
 }

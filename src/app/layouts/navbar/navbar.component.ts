@@ -1,11 +1,9 @@
 import { CategoriesService } from './../../core/services/categories/categories.service';
-import { UserData } from './../../shared/interfaces/user-data';
 import { IProducts } from './../../shared/interfaces/iproducts';
 import { SharedvalueService } from './../../core/services/shared/sharedvalue.service';
 import { AuthService } from './../../core/services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { Component, HostListener, inject, OnInit, PLATFORM_ID, ViewChild, ElementRef, AfterViewInit, Renderer2, Input } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { ProductsService } from '../../core/services/products/products.service';
 import { Subscription } from 'rxjs';
 import { ICategries } from '../../shared/interfaces/Icategries';
@@ -15,7 +13,6 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { PanelMenu } from 'primeng/panelmenu';
 import { WishListComponent } from "../../shared/components/wish-list/wish-list.component"
 import { LanguageComponent } from "../../shared/components/language/language.component";
-import { TranslatePipe } from '@ngx-translate/core';
 import { CartService } from '../../core/services/cart/cart.service';
 
 @Component({
@@ -27,7 +24,6 @@ import { CartService } from '../../core/services/cart/cart.service';
     PanelMenu,
     WishListComponent,
     LanguageComponent,
-    TranslatePipe
   ],
   providers: [MessageService],
   templateUrl: './navbar.component.html',
@@ -56,6 +52,7 @@ export class NavbarComponent implements OnInit {
   isNavbarOverlayShow: boolean = false
   userName: string | null = null
   cartproductNumber: number = 0
+  totalProductsPrice: number = 0
   callProduct() {
     this.productsServices.getProducts().subscribe({
       next: (res) => {
@@ -221,13 +218,25 @@ export class NavbarComponent implements OnInit {
   }
   getUserData() {
     this.userName = this.sharedvalueService.userData?.name!
-    // console.log(this.sharedvalueService.userData?.name);
   }
   getCartDetails() {
+    this.cartService.getLoggedUerCart().subscribe({
+      next: (res) => {
+        this.cartService.cartProdurctsNumber.next(res.numOfCartItems)
+        this.cartService.productsCartPrice.next(res.data.totalCartPrice)
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
     this.cartService.cartProdurctsNumber.subscribe({
       next: (value) => {
-        console.log(value);
         this.cartproductNumber = value
+      }
+    })
+    this.cartService.productsCartPrice.subscribe({
+      next: (value) => {
+        this.totalProductsPrice = value
       }
     })
   }
