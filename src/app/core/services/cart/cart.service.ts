@@ -1,6 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { StarIcon } from 'primeng/icons';
 
@@ -9,8 +9,8 @@ import { StarIcon } from 'primeng/icons';
 })
 export class CartService {
 
-  cartProdurctsNumber: BehaviorSubject<number> = new BehaviorSubject(0)
-  productsCartPrice: BehaviorSubject<number> = new BehaviorSubject(0)
+  cartProdurctsNumber: WritableSignal<number> = signal(0)
+  productsCartPrice: WritableSignal<number> = signal(0)
 
 
   constructor(private httpClient: HttpClient) {

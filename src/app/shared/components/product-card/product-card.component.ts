@@ -44,13 +44,17 @@ export class ProductCardComponent {
     this.isProductAdd = true
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
-
-        this.cartService.cartProdurctsNumber.next(res.numOfCartItems)
-        this.cartService.productsCartPrice.next(res.data.totalCartPrice)
+        this.cartService.cartProdurctsNumber.set(res.numOfCartItems)
+        this.cartService.productsCartPrice.set(res.data.totalCartPrice)
         // porperity to make spinner off 
         this.isProductAdd = false
         this.messageAdd = res.message
-        this.showSuccess()
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Added to Cart',
+          detail: 'The product was added successfully'
+        });
       },
       error: (err) => {
         // porperity to make spinner off 

@@ -1,12 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, inject, Injectable, PLATFORM_ID, Renderer2, RendererFactory2 } from '@angular/core';
+import { Inject, inject, Injectable, PLATFORM_ID, Renderer2, RendererFactory2, signal, WritableSignal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core'
 import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class MyTranslateService {
-  currentlang = new BehaviorSubject<string>('')
+  currentlang: WritableSignal<string> = signal('')
 
   constructor(private translateService: TranslateService, @Inject(PLATFORM_ID) private Id: Object) {
     // this.renderer = rendererFactory.createRenderer(null, null);
@@ -40,7 +40,7 @@ export class MyTranslateService {
     // save localStorage == lang 
     localStorage.setItem('lang', lang)
     // use lang
-    this.currentlang.next(lang)
+    this.currentlang.set(lang)
     this.translateService.use(lang)
     // change direcation
     this.changeDirection()

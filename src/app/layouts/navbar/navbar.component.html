@@ -249,13 +249,13 @@
                 <i class="fa-solid fa-cart-shopping text-2xl"></i>
                 <span
                   class="absolute -top-1/2 end-0 py-1 size-[20px] flex justify-center items-center border border-green-800 bg-green-400 text-white rounded-full text-[12px]">
-                  {{ cartproductNumber }}
+                  {{ cartproductNumber() }}
                 </span>
               </span>
               <span class="mx-2 font-semibold hidden md:block">
                 {{ "navbar.cart" | translate }}
               </span>
-              <span> {{ totalProductsPrice }} <small>EGP</small> </span>
+              <span> {{ totalProductsPrice() }} <small>EGP</small> </span>
             </a>
             <a (click)="logOut()" class="inline-flex items-center text-black/70 hover:text-black transition">
               <i class="fa-solid fa-right-from-bracket text-2xl"></i>

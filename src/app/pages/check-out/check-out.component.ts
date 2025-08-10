@@ -7,13 +7,13 @@ import { Select } from 'primeng/select';
 import { PaymentService } from '../../core/services/payment/payment.service';
 import { CartService } from '../../core/services/cart/cart.service';
 import { CartData } from '../../shared/interfaces/cart/cart-data';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 
 @Component({
   selector: 'app-check-out',
-  imports: [ReactiveFormsModule, FormsModule, InputTextModule, FloatLabel, Select, Toast],
+  imports: [ReactiveFormsModule, FormsModule, InputTextModule, FloatLabel, Select, Toast, RouterLink],
   templateUrl: './check-out.component.html',
   styleUrl: './check-out.component.scss',
   providers: [MessageService]
@@ -44,6 +44,8 @@ export class CheckOutComponent implements OnInit {
     })
     this.payType = this.acitvatedRouter.snapshot.queryParamMap.get('t')
     this.cartID = this.acitvatedRouter.snapshot.queryParamMap.get('cartId')
+    console.log(this.cartData);
+
   }
   // ? method to genrate cities in select input
   citiesChange(): void {
@@ -94,6 +96,8 @@ export class CheckOutComponent implements OnInit {
     this.cartService.updateCartProductQuantity(id, count).subscribe({
       next: (res) => {
         this.cartData = res.data
+        this.cartService?.cartProdurctsNumber.set(res.numOfCartItems)
+        this.cartService?.productsCartPrice.set(res.data.totalCartPrice)
       },
       error: (err) => {
         console.log(err);
@@ -106,6 +110,8 @@ export class CheckOutComponent implements OnInit {
       {
         next: (res) => {
           this.cartData = res.data
+          this.cartService?.cartProdurctsNumber.set(res.numOfCartItems)
+          this.cartService?.productsCartPrice.set(res.data.totalCartPrice)
         },
         error: (err) => {
           console.log(err);

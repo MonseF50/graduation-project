@@ -2,6 +2,7 @@ import { ProductsService } from './../../core/services/products/products.service
 import {
   AfterViewInit,
   Component,
+  effect,
   inject,
   OnDestroy,
   OnInit,
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
   productSubscription!: Subscription;
   categriesData: ICategries[] | null = null;
   productsData: IProducts[] | null = null;
-  isTranslated: boolean = true
+  isTranslated: boolean = false
 
   days: number = 0;
   hours: number = 0;
@@ -52,19 +53,20 @@ export class HomeComponent implements OnInit {
   private intervalId: any;
   // method to call categories
   // method to call categories
+  constructor() {
+    effect(() => {
+      let currentLang = this.myTranslateService.currentlang
 
-  ngOnInit(): void {
-    this.myTranslateService.currentlang.subscribe(
-      {
-        next: (val) => {
-          if (val === 'en') {
-            this.isTranslated = false
-          } else {
-            this.isTranslated = true
-          }
-        }
+      if (currentLang() === 'en') {
+        this.isTranslated = false
+      } else {
+        this.isTranslated = true
       }
-    )
+      console.log(this.isTranslated);
+    })
+  }
+  ngOnInit(): void {
+
     this.callCategries();
     this.callProducts();
     if (isPlatformBrowser(this.ID)) {

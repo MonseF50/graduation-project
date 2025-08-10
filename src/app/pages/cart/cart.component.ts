@@ -44,7 +44,8 @@ export class CartComponent implements OnInit {
       {
         next: (res) => {
           this.cartData = res.data
-          this.cartService?.cartProdurctsNumber.next(res.numOfCartItems)
+          this.cartService?.cartProdurctsNumber.set(res.numOfCartItems)
+          this.cartService?.productsCartPrice.set(res.data.totalCartPrice)
         },
         error: (err) => {
           console.log(err);
@@ -57,7 +58,9 @@ export class CartComponent implements OnInit {
       {
         next: (res) => {
           if (res.message == 'success') {
-            this.cartService?.cartProdurctsNumber.next(0)
+            this.cartService?.cartProdurctsNumber.set(0)
+            this.cartService?.productsCartPrice.set(0)
+
             this.cartData = null
           }
         },

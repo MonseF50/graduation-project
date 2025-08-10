@@ -101,6 +101,8 @@ export class BlankComponent implements OnInit {
     this.cartService.updateCartProductQuantity(id, count).subscribe({
       next: (res) => {
         this.cartData = res.data;
+        this.cartService?.cartProdurctsNumber.set(res.numOfCartItems)
+        this.cartService?.productsCartPrice.set(res.data.totalCartPrice)
       },
       error: (err) => {
         console.log(err);
@@ -112,6 +114,8 @@ export class BlankComponent implements OnInit {
     this.cartService.deleteSpecificProduct(id).subscribe({
       next: (res) => {
         this.cartData = res.data;
+        this.cartService?.cartProdurctsNumber.set(res.numOfCartItems)
+        this.cartService?.productsCartPrice.set(res.data.totalCartPrice)
       },
       error: (err) => {
         console.log(err);

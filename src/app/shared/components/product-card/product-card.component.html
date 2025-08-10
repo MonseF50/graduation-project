@@ -1,13 +1,10 @@
 <!-- message success -->
-<div class="toast">
+<!-- <div class="toast">
   <p-toast baseZIndex="5000" position="top-right" />
-</div>
+</div> -->
 
 <div class="card group" data-aos-anchor-placement="center-bottom">
-  <div
-    class="card-head relative cursor-pointer flex justify-center"
-    [routerLink]="['/productDetailes', product?._id]"
-  >
+  <div class="card-head relative cursor-pointer flex justify-center" [routerLink]="['/productDetailes', product?._id]">
     <div class="img relative">
       @if(product?.priceAfterDiscount){
       <div class="page-discount absolute top-5 start-3">
@@ -16,25 +13,17 @@
         </small>
       </div>
       }
-      <img
-        [src]="product?.imageCover"
-        class="border border-gray-300 size-[300px] object-cover"
-        [alt]="product?.title"
-      />
+      <img [src]="product?.imageCover" class="border border-gray-300 size-[300px] object-cover"
+        [alt]="product?.title" />
     </div>
     <div
-      class="overlay opacity-0 group-hover:opacity-100 transition absolute top-1/2 start-1/2 -translate-x-1/2 group-hover:-translate-y-1/2 flex gap-3"
-    >
-      <a
-        (click)="addProductToCart(product?._id!, $event)"
-        class="cart p-3 rounded-full inline-flex justify-center items-center bg-white hover:bg-white/80 text-black"
-      >
+      class="overlay opacity-0 group-hover:opacity-100 transition absolute top-1/2 start-1/2 -translate-x-1/2 group-hover:-translate-y-1/2 flex gap-3">
+      <a (click)="addProductToCart(product?._id!, $event)"
+        class="cart p-3 rounded-full inline-flex justify-center items-center bg-white hover:bg-white/80 text-black">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
-      <a
-        (click)="addToWishList(product?._id!, $event)"
-        class="wish p-3 rounded-full inline-flex justify-center items-center bg-white hover:bg-white/80 text-black"
-      >
+      <a (click)="addToWishList(product?._id!, $event)"
+        class="wish p-3 rounded-full inline-flex justify-center items-center bg-white hover:bg-white/80 text-black">
         <i class="fa-regular fa-heart"></i>
       </a>
     </div>
@@ -45,15 +34,10 @@
       {{ product?.title?.split(" ", 2)?.join(" ") }}
     </h4>
     <div class="price flex gap-3 justify-center">
-      <span
-        [class]="{ 'line-through': product?.priceAfterDiscount }"
-        class="font-bold text-xl text-red-700"
-        >{{ product?.price }}</span
-      >
-      <span class="text-red-700 font-bold text-xl"
-        >{{ product?.priceAfterDiscount }}
-        <span class="text-sm">EGP</span></span
-      >
+      <span [class]="{ 'line-through': product?.priceAfterDiscount }" class="font-bold text-xl text-red-700">{{
+        product?.price }}</span>
+      <span class="text-red-700 font-bold text-xl">{{ product?.priceAfterDiscount }}
+        <span class="text-sm">EGP</span></span>
     </div>
     <div class="flex flex-col items-center gap-2">
       <p>
@@ -63,13 +47,11 @@
 
       <div class="stars flex gap-1">
         @for (star of getStarArray(product?.ratingsAverage!); track $index) {
-        <i
-          [ngClass]="
+        <i [ngClass]="
             star
               ? 'pi pi-star-fill text-yellow-500'
               : 'pi pi-star text-gray-400'
-          "
-        ></i>
+          "></i>
         }
       </div>
     </div>
@@ -81,10 +63,8 @@
         }"
       />
     </div> -->
-    <button
-      (click)="addProductToCart(product?._id!, $event)"
-      class="bg-primary w-2/3 rounded-md text-white py-2 mt-5 cursor-pointer hover:bg-secondery transition"
-    >
+    <button (click)="addProductToCart(product?._id!, $event)"
+      class="bg-primary w-2/3 rounded-md text-white py-2 mt-5 cursor-pointer hover:bg-secondery transition">
       @if (isProductAdd) {
       <span class="fa-solid fa-spin fa-spinner"></span>
       }@else {
