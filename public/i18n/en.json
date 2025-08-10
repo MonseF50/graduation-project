@@ -1,27 +1,55 @@
 {
-
-    "navbar": {
-        "language" : "language",
-        "Midseason Sale: 20% Off — Limited Time Only" : "Midseason Sale: 20% Off — Limited Time Only",
-        "aboutUs" : "about Us",
-        "contactus" : "contactus",
-        "blog" : "blog",
-        "stor location " : "stor location",
-        "metro hyper " : "metro hyper",
-        "browse now " : "browse now",
-        "home" : "home",
-        "products" : "products",
-        "categories" : "categories",
-        "brands" : "brands",
-        "search here" : "search here",
-        "wishlist" : "wishlist",
-        "cart" : "cart",
-        "top porduct sold" : "top porduct sold" , 
-        "overview" : "overview" ,
-        "Categorie Side" : "categories Side" 
+  "blank": {
+    "showCart": "Show Cart",
+    "viewCart": "Show Cart",
+    "webSites": "WebSites",
+    "loadding": "loadding",
+    "subTotal": "SubTotal",
+    "empty": "there is no products yet",
+    "checkOut": "Check Out",
+    "drowerPosition": "left"
+  },
+  "navbar": {
+    "delas": "Midseason Sale: 20% Off — Limited Time Only",
+    "aboutUs": "about Us",
+    "contactus": "contactus",
+    "blog": "blog",
+    "location": "stor location",
+    "logo": "metro hyper",
+    "searchHere": "Search Here",
+    "browse": "browse now",
+    "home": "home",
+    "products": "products",
+    "categories": "categories",
+    "brands": "brands",
+    "wishlist": "wishlist",
+    "cart": "cart",
+    "topPorductSold": "top porduct sold",
+    "overview": "overview",
+    "CategorieSide": "categories Side",
+    "logOut": "log out"
+  },
+  "home": {
+  "welcomeShop": "Welcome to Metro Shop",
+  "deleveryMessage": "We deliver the next day from 10:00 AM to 08:00 PM",
+  "firstOrder": "First order is always free",
+  "shopNow": "Shop Now",
+  "bigSale": "Big Sale",
+  "offer": "25% off on chocolate products",
+  "offerBuy": "Buy more than 1000 EGP and get a bigger discount",
+  "offerCoffe": "20% off on coffee products",
+    "icon": {
+      "loveh": "100% Satisfaction Guarantee!",
+      "lovep": "Made With Love",
+      "deleveryh":"24 Hours Delevery",
+      "deleveryp":"First Order Always Free",
+      "paymenth":"Secure Payments",
+      "paymentp":"We use safest payment technologies",
+      "supporth":"Top-Notch Support",
+      "supportp":"Chat with us if you’ve any questions"
     },
-    "home" :{
-
+    "dealOfMounth": {
+      
     }
-
+  }
 }

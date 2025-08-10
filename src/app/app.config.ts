@@ -25,8 +25,9 @@ export const appConfig: ApplicationConfig = {
   provideAnimations(),
   provideAnimationsAsync(),
   provideHttpClient(withFetch(), withInterceptors([headersInterceptor, loadingInterceptor])),
-  importProvidersFrom([NgxSpinnerModule], TranslateModule.forRoot(
+  importProvidersFrom(NgxSpinnerModule, TranslateModule.forRoot(
     {
+      defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,

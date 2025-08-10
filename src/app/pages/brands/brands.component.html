@@ -8,11 +8,7 @@
             @for (brand of brandsData.slice(0,20); track brand._id) {
             <ng-template carouselSlide>
               <a>
-                <img
-                  [src]="brand.image"
-                  class="size-[100px]"
-                  [alt]="brand.name"
-                />
+                <img [src]="brand.image" class="size-[100px]" [alt]="brand.name" />
               </a>
             </ng-template>
             }
@@ -23,11 +19,7 @@
             @for (brand of brandsData; track brand._id) {
             <ng-template carouselSlide>
               <a>
-                <img
-                  [src]="brand.image"
-                  class="size-[100px]"
-                  [alt]="brand.name"
-                />
+                <img [src]="brand.image" class="size-[100px]" [alt]="brand.name" />
               </a>
             </ng-template>
             }
@@ -38,11 +30,7 @@
             @for (brand of brandsData.slice(20,40); track brand._id) {
             <ng-template carouselSlide>
               <a>
-                <img
-                  [src]="brand.image"
-                  class="size-[100px]"
-                  [alt]="brand.name"
-                />
+                <img [src]="brand.image" class="size-[100px]" [alt]="brand.name" />
               </a>
             </ng-template>
             }
@@ -55,14 +43,10 @@
 </section>
 <section class="all-brands my-20">
   <div class="container mx-auto">
-    <div
-      class="allbrands-container grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5"
-    >
+    <div class="allbrands-container grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
       @for (brand of brandsData; track brand._id) {
-      <div
-        (click)="ShowBrandDetails(brand._id)"
-        class="flex flex-col justify-center items-center gap-4 p-5 border border-black/10 rounded-xl hover:shadow-md hover:shadow-primary/50 transition duration-500 cursor-pointer"
-      >
+      <div (click)="ShowBrandDetails(brand._id)"
+        class="flex flex-col justify-center items-center gap-4 p-5 border border-black/10 rounded-xl hover:shadow-md hover:shadow-primary/50 transition duration-500 cursor-pointer">
         <img [src]="brand.image" [alt]="brand.name" />
         <p class="text-3xl">{{ brand.name }}</p>
       </div>
@@ -71,25 +55,13 @@
   </div>
 </section>
 <div class="dialog">
-  <p-dialog
-    header="Brand"
-    [modal]="true"
-    [(visible)]="visible"
-    [style]="{ width: '25rem' }"
-  >
+  <p-dialog header="Brand" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
     <div class="flex flex-col justify-center items-center mb-10">
-      <img
-        [src]="this.spacificBrandData?.image"
-        [alt]="this.spacificBrandData?.slug"
-      />
+      <img [src]="this.spacificBrandData?.image" [alt]="this.spacificBrandData?.slug" />
       <p class="text-2xl text-meuted">{{ this.spacificBrandData?.name }}</p>
     </div>
     <div class="flex justify-end gap-2">
-      <p-button
-        routerLink="/products"
-        label="Go To Shop"
-        (click)="visible = false"
-      />
+      <p-button routerLink="/products" label="Go To Shop" (click)="visible = false" />
       <p-button label="Close" (click)="visible = false" />
     </div>
   </p-dialog>

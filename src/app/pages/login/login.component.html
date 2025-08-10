@@ -4,25 +4,16 @@
 </div>
 <!-- div of form design  -->
 <div class="login w-full h-screen flex gap-5 overflow-hidden">
-  <div
-    class="grid grid-cols-1 lg:grid-cols-2 text-white w-full md:w-3/4 mx-auto p-5 xl:py-40"
-  >
-    <div
-      class="img flex-col hidden lg:flex md:justify-center md:items-center xl:justify-start lg:items-start"
-    >
+  <div class="grid grid-cols-1 lg:grid-cols-2 text-white w-full md:w-3/4 mx-auto p-5 xl:py-40">
+    <div class="img flex-col hidden lg:flex md:justify-center md:items-center xl:justify-start lg:items-start">
       <h2 class="ms-20 text-3xl text-start font-bold">
         Sing IN <br />
         And Enjoy With Us
       </h2>
-      <img
-        src="/images/login.svg"
-        class="block size-[400] -mt-8"
-        alt="login image"
-      />
+      <img src="/images/login.svg" class="block size-[400] -mt-8" alt="login image" />
     </div>
     <div
-      class="flex flex-col justify-center items-center md:justify-center md:items-center xl:justify-start lg:items-start"
-    >
+      class="flex flex-col justify-center items-center md:justify-center md:items-center xl:justify-start lg:items-start">
       <div class="caption mb-5 md:mb-20">
         <h2 class="text-center text-5xl w-fit mb-3 mx-auto md:mx-0 font-bold">
           Sign In
@@ -35,48 +26,25 @@
         <div class="form w-full!">
           <div class="email mb-8">
             <p-floatlabel variant="on">
-              <input
-                formControlName="email"
-                name="uEmail"
-                pInputText
-                id="email"
-                class="w-full"
-                type="email"
-                autocomplete="off"
-              />
+              <input formControlName="email" name="uEmail" pInputText id="email" class="w-full" type="email"
+                autocomplete="off" />
               <label for="email" class="text-primary">User Email</label>
             </p-floatlabel>
           </div>
           <div class="password">
             <p-floatlabel variant="on">
-              <input
-                formControlName="password"
-                name="uPassword"
-                pInputText
-                type="password"
-                id="password"
-                class="w-full!"
-                autocomplete="off"
-              />
+              <input formControlName="password" name="uPassword" pInputText type="password" id="password"
+                class="w-full!" autocomplete="off" />
               <label for="password" class="text-primary">User Password</label>
             </p-floatlabel>
           </div>
           <div class="mt-6 flex justify-between">
-            <a
-              routerLink="/register"
-              class="hover:text-secondery transition flex justify-center items-center"
-              >Register ?</a
-            >
-            <a
-              routerLink="/forget-password"
-              class="hover:text-secondery transition flex justify-center items-center"
-              >Forget Password ?</a
-            >
+            <a routerLink="/register" class="hover:text-secondery transition flex justify-center items-center">Register
+              ?</a>
+            <a routerLink="/forget-password"
+              class="hover:text-secondery transition flex justify-center items-center">Forget Password ?</a>
           </div>
-          <button
-            [disabled]="!lonInFormObj.valid && !isLoading"
-            class="form-btn mx-auto"
-          >
+          <button [disabled]="!lonInFormObj.valid && !isLoading" class="form-btn mx-auto">
             @if (!isLoading) {
             <span>Log In</span>
             }@else {

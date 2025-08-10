@@ -5,25 +5,33 @@
         <app-language></app-language>
         <p class="hidden md:block">
           <i class="fa-solid fa-money-bill-wave"></i>
-          <span> Midseason Sale: 20% Off — Limited Time Only</span>
+          <span> {{ "navbar.delas" | translate }} </span>
         </p>
       </div>
       <div class="text-white flex gap-3">
         <a class="border-white/50 border-e-[1px] pe-3 py-1 group">
           <i class="fa-solid fa-shop"></i>
-          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">about us</span>
+          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">
+            {{ "navbar.aboutUs" | translate }}
+          </span>
         </a>
         <a class="border-white/50 border-e-[1px] pe-3 py-1 group">
           <i class="fa-regular fa-circle-question"></i>
-          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">contact us</span>
+          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">
+            {{ "navbar.contactus" | translate }}
+          </span>
         </a>
         <a class="border-white/50 border-e-[1px] pe-3 py-1 group hidden md:block">
           <i class="fa-solid fa-shop"></i>
-          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">blog</span>
+          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">
+            {{ "navbar.blog" | translate }}
+          </span>
         </a>
         <a class="py-1 group hidden md:block">
           <i class="fa-solid fa-location-dot"></i>
-          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">store locator</span>
+          <span class="capitalize text-sm sm:text-none ms-2 font-semibold group-hover:underline">
+            {{ "navbar.location" | translate }}
+          </span>
         </a>
       </div>
     </div>
@@ -34,15 +42,18 @@
       <div class="flex items-center py-3">
         <a routerLink="/home" class="flex items-center gap-3">
           <img src="/logo.png" class="w-[50px]" alt="shop logo" />
-          <h2 class="font-bold hidden sm:block">Metro Hyper</h2>
+          <h2 class="font-bold hidden sm:block">
+            {{ "navbar.logo" | translate }}
+          </h2>
         </a>
         <div class="flex grow justify-between">
           <div
-            class="browse mx-2 sm:mx-5 group relative px-5 group hidden bg-white border-2 border-primary hover:bg-primary xl:block">
+            class="browse mx-2 px-3 sm:mx-5 group relative px-5 group hidden bg-white border-2 border-primary hover:bg-primary xl:block">
             <div
               class="font-bold flex justify-center items-center text-primary group-hover:text-white cursor-pointer p-3 transition">
               <i class="fa-solid fa-cubes"></i>
-              <span class="inline-block mx-5 text-sm sm:text-md">Browse Now</span>
+              <span class="inline-block mx-5 text-sm sm:text-md"> {{ "navbar.browse" | translate }}
+              </span>
               <i class="down fa-solid fa-angle-down"></i>
               <i class="up hidden fa-solid fa-angle-up"></i>
             </div>
@@ -51,14 +62,15 @@
                 <li>
                   <a class="w-full py-3 block ps-5 hover:bg-meuted/20 transition" routerLink="home">
                     <i class="fa-solid fa-house"></i>
-                    <span class="ms-3">Home</span>
+                    <span class="ms-3">{{ "navbar.home" | translate }} </span>
                   </a>
                 </li>
                 <li>
                   <a class="w-full py-3 block ps-5 hover:bg-meuted/20 transition border-t-[1px] border-meuted/40"
                     routerLink="cart">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="ms-3">Cart</span>
+                    <span class="ms-3">{{ "navbar.cart" | translate }}
+                    </span>
                   </a>
                 </li>
                 <li class="porducts-link" #pordutsLi>
@@ -66,7 +78,9 @@
                     routerLink="products">
                     <div>
                       <i class="fa-solid fa-sitemap"></i>
-                      <span class="ms-3"> Products</span>
+                      <span class="ms-3">
+                        {{ "navbar.products" | translate }}
+                      </span>
                     </div>
                     <div class="arrow">
                       <span class="group-hover/prod:hidden">
@@ -148,7 +162,8 @@
                     routerLink="categories">
                     <div>
                       <i class="fa-solid fa-list"></i>
-                      <span class="ms-3"> Categries</span>
+                      <span class="ms-3">
+                        {{ "navbar.categories" | translate }}</span>
                     </div>
                     <div class="arrow">
                       <span class="group-hover/cat:hidden">
@@ -199,7 +214,9 @@
                     routerLink="brands">
                     <div>
                       <i class="fa-solid fa-shuffle"></i>
-                      <span class="ms-3"> Brands</span>
+                      <span class="ms-3">
+                        {{ "navbar.brands" | translate }}
+                      </span>
                     </div>
                   </a>
                 </li>
@@ -220,7 +237,7 @@
               <span class="absolute top-1/2 start-3 text-meuted -translate-y-1/2">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </span>
-              <input type="search" name="search" placeholder="Search Here"
+              <input type="search" name="search" [placeholder]="'navbar.searchHere' |translate"
                 class="shadow-none border-0 focus:outline-0 p-3 rounded-xl bg-meuted/10 w-full px-10" />
             </form>
           </div>
@@ -235,12 +252,16 @@
                   {{ cartproductNumber }}
                 </span>
               </span>
-              <span class="mx-2 font-semibold hidden md:block"> Cart</span>
-              <span> {{totalProductsPrice}} <small>EGP</small> </span>
+              <span class="mx-2 font-semibold hidden md:block">
+                {{ "navbar.cart" | translate }}
+              </span>
+              <span> {{ totalProductsPrice }} <small>EGP</small> </span>
             </a>
             <a (click)="logOut()" class="inline-flex items-center text-black/70 hover:text-black transition">
               <i class="fa-solid fa-right-from-bracket text-2xl"></i>
-              <span class="ms-2 font-semibold hidden md:block">Log Out</span>
+              <span class="ms-2 font-semibold hidden md:block">
+                {{ "navbar.logOut" | translate }}
+              </span>
             </a>
           </div>
         </div>

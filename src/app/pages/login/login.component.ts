@@ -64,7 +64,7 @@ export class LoginComponent implements OnDestroy {
     }
   }
   ngOnDestroy(): void {
-    this.logInSubscription.unsubscribe()
+    // this.logInSubscription.unsubscribe()
   }
   //* method that show the success message 
   // showMessageSuccess(): void {

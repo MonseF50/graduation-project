@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
 import { BrandsService } from '../../core/services/brands/brands.service';
 import { Brand } from '../../shared/interfaces/brands/brand';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
@@ -7,12 +7,15 @@ import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { RouterLink } from '@angular/router';
+import { register } from 'swiper/element/bundle';
+import { Swiper } from 'swiper/types';
 
 @Component({
   selector: 'app-brands',
   imports: [CarouselModule, Dialog, ButtonModule, InputTextModule, RouterLink],
   templateUrl: './brands.component.html',
-  styleUrl: './brands.component.scss'
+  styleUrl: './brands.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BrandsComponent implements OnInit {
   private brandsService = inject(BrandsService)
@@ -22,6 +25,7 @@ export class BrandsComponent implements OnInit {
 
   ngOnInit(): void {
     this.callAllBrands()
+
   }
   callAllBrands() {
     this.brandsService.getAllBrands().subscribe({
@@ -56,6 +60,10 @@ export class BrandsComponent implements OnInit {
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
+    autoplay: true,
+    smartSpeed: 300,
+    autoplaySpeed: 100,
+    rtl: true,
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
@@ -81,6 +89,7 @@ export class BrandsComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
+    rtl: true,
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
@@ -106,6 +115,7 @@ export class BrandsComponent implements OnInit {
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
+    rtl: true,
     dots: false,
     navSpeed: 700,
     navText: ['', ''],

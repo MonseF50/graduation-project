@@ -14,6 +14,8 @@ import { PanelMenu } from 'primeng/panelmenu';
 import { WishListComponent } from "../../shared/components/wish-list/wish-list.component"
 import { LanguageComponent } from "../../shared/components/language/language.component";
 import { CartService } from '../../core/services/cart/cart.service';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/myTranslate/my-translate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -24,6 +26,7 @@ import { CartService } from '../../core/services/cart/cart.service';
     PanelMenu,
     WishListComponent,
     LanguageComponent,
+    TranslatePipe
   ],
   providers: [MessageService],
   templateUrl: './navbar.component.html',
@@ -41,6 +44,7 @@ export class NavbarComponent implements OnInit {
   private cartService = inject(CartService)
   private router = inject(Router)
   private Id = inject(PLATFORM_ID)
+  // private myTranslateService = inject(MyTranslateService)
   porductSubscribtion!: Subscription
   productsData: IProducts[] | null = null;
   categoriesData: ICategries[] | null = null;
