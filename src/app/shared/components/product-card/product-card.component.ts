@@ -62,7 +62,9 @@ export class ProductCardComponent {
     icon.classList.toggle('text-white');
     this.wishListService.addProductToWishList(id).subscribe({
       next: (res) => {
+        this.wishListService.wishCartProductNumber.set(res.data.length)
         this.toast.showSucess(res.message)
+        console.log(res);
       },
       error: (err) => { },
     });

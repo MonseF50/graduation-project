@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -7,7 +7,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class WishListService {
-  wishCartProductNumber: BehaviorSubject<number> = new BehaviorSubject(0);
+  // wishCartProductNumber: BehaviorSubject<number> = new BehaviorSubject(0);
+  wishCartProductNumber: WritableSignal<number> = signal(0);
+
   constructor(private httpClient: HttpClient) { }
 
   addProductToWishList(Id: string): Observable<any> {
