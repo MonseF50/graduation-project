@@ -1,16 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal, signal } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
-
-  // constructor(private messageService: MessageService) { }
-  // showError(message: string) {
-  //   this.messageService.add({ severity: 'error', summary: 'Error', detail: message });
-  // }
-  // showSuccess(message: string) {
-  //   this.messageService.add({ severity: 'success', summary: 'Success', detail: message });
-  // }
+  constructor(private messageService: MessageService) { }
+  showError(errorMessage: string) {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: errorMessage,
+      styleClass: 'my-custom-toast',
+    });
+  }
+  showSucess(success: string) {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Sucess',
+      detail: success,
+    });
+  }
 }

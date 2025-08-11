@@ -62,7 +62,6 @@ export class HomeComponent implements OnInit {
       } else {
         this.isTranslated = true
       }
-      console.log(this.isTranslated);
     })
   }
   ngOnInit(): void {

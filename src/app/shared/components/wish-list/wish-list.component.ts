@@ -2,29 +2,29 @@ import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { DrawerModule } from 'primeng/drawer';
 import { WishListService } from '../../../core/services/wishList/wish-list.service';
 import { IProducts } from '../../interfaces/iproducts';
+import { ToastService } from '../../../core/services/toast/toast.service';
 
 @Component({
   selector: 'app-wish-list',
   imports: [DrawerModule],
   templateUrl: './wish-list.component.html',
-  styleUrl: './wish-list.component.scss'
+  styleUrl: './wish-list.component.scss',
 })
 export class WishListComponent implements OnInit {
-  private wishListService = inject(WishListService)
-  visible: boolean = false;
-  wishListProducts: IProducts | null = null
+  private wishListService = inject(WishListService);
+  visible: boolean = false
+  wishListProducts: IProducts[] | null = null;
   ngOnInit(): void {
-    this.callWishList()
+    this.callWishList();
   }
   callWishList(): void {
     this.wishListService.getLoggedUserWishList().subscribe({
       next: (res) => {
-        this.wishListProducts = res.data
-        console.log(this.wishListProducts);
+        this.wishListProducts = res.data;
       },
       error: (err) => {
         console.log(err);
-      }
-    })
+      },
+    });
   }
 }
