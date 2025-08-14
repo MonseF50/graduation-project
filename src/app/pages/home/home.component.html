@@ -139,7 +139,7 @@
       <div class="deal bg-white/80 p-5">
         <h3 class="text-3xl font-bold mb-5">Deal Of The Month :</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-          @for (prod of productsData?.slice(0,12 ); track prod._id) {
+          @for (prod of productsData?.slice(0,11 ); track prod._id) {
           @if(prod.priceAfterDiscount){
           <app-product-card [product]="prod"></app-product-card>
           } }
@@ -208,7 +208,7 @@
       <h2 class="text-2xl md:text-4xl mb-4 font-bold ps-2">
         Most Selling Products :
       </h2>
-      <a class="items-center gap-2 text-meuted hover:text-primary transition hidden md:flex">
+      <a routerLink="/products" class="items-center gap-2 text-meuted hover:text-primary transition hidden md:flex">
         see all Products <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>

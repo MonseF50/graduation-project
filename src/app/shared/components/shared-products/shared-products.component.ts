@@ -1,3 +1,4 @@
+import { ValidationErrors } from '@angular/forms';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { Component, ElementRef, inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -74,14 +75,18 @@ export class SharedProductsComponent {
     this.sortOptions = [
       {
         name: 'Low To Heigh',
+        value: 'price',
       },
-      { name: 'Heigh To Low' },
+      {
+        name: 'Heigh To Low',
+        value: '-price',
+
+      },
     ];
     this.limitOptions = [
-      { name: '12' },
-      { name: '24' },
-      { name: '26' },
-      { name: 'All' },
+      { name: '12', value: '12' },
+      { name: '24', value: '24' },
+      { name: '26', value: '26' },
     ];
   }
   // * method to call all categories 
@@ -146,18 +151,37 @@ export class SharedProductsComponent {
   }
 
   // *method to filter product by price with the range
-  getProductByPrice() {
+  filterProductByPrice() {
     const element = this.productContainer.nativeElement
-    this.callProducts(this.categoreId, this.currentPage, this.minValue, this.maxValue)
+    // this.callProducts(this.categoreId, this.currentPage, this.minValue, this.maxValue) 
     this.goUp(element)
+    this.productsService.getProducts(
+      undefined,
+      undefined,
+      this.minValue,
+      this.maxValue,
+      undefined,
+      undefined
+    ).subscribe({
+      next: (res) => {
+        this.productsData = res.data
+        this.productsNumber = res?.results
+
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+
   }
   // method to changet the value of the page number 
   onPageChange(event: PaginatorState) {
     const element = this.productContainer.nativeElement
     this.first = event.first ?? 0;
-    this.rows = event.rows ?? 10;
+    this.rows = event.rows ?? 12;
     this.currentPage = Number(event?.page) + 1
-    this.callProducts(undefined, this.currentPage, this.minValue, this.maxValue)
+
+    this.callProducts(this.categoreId, this.currentPage, this.minValue, this.maxValue)
     this.goUp(element)
   }
   goUp(ele: HTMLElement): void {
@@ -169,6 +193,24 @@ export class SharedProductsComponent {
     }
   }
   // * method to get the prduct brand to display it in the megamenue
-  getPrductsByBrand() {
+  getPrductsBySort(): void {
+    this.productsService.getProducts(this.categoreId, this.currentPage, undefined, undefined, this.selectedSortOptions?.value, this.selectedLimitOptions?.value).subscribe({
+      next: (res) => {
+        this.productsData = res.data
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+  getPrductsByShow(): void {
+    this.productsService.getProducts(this.categoreId, this.currentPage, undefined, undefined, this.selectedSortOptions?.value, this.selectedLimitOptions?.value).subscribe({
+      next: (res) => {
+        this.productsData = res.data
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 }

@@ -19,7 +19,7 @@
                       <p-slider [min]="0" [max]="5000" [step]="0" [(ngModel)]="rangeValues" [range]="true"
                         (onChange)="updateRange()" />
                     </div>
-                    <button (click)="getProductByPrice()"
+                    <button (click)="filterProductByPrice()"
                       class="block w-fit py-1.5 px-8 mt-8 cursor-pointer rounded-md text-xl text-white bg-primary hover:bg-secondery transition">
                       Apply
                     </button>
@@ -33,7 +33,8 @@
                 <p-accordion-content class="bg-transparent!">
                   <div class="filter-by-categore mb-6">
                     <div class="categorie">
-                      <p (click)="callProducts()" class="p-2 hover:bg-gray-200/40 transition text-lg cursor-pointer">
+                      <p (click)="callProducts(); categoreFilterName = 'All Products'"
+                        class="p-2 hover:bg-gray-200/40 transition text-lg cursor-pointer">
                         All Products
                       </p>
                       @for (cat of categoriesData; track cat._id) {
@@ -44,7 +45,7 @@
                       }
                     </div>
                   </div>
-                  `
+
                 </p-accordion-content>
               </p-accordion-panel>
 
@@ -65,20 +66,21 @@
       <div class="filter-mobile block lg:hidden"></div>
       <!--! maket fillter in mobile with primng with  Drower -->
       <div>
-        <div class="title flex items-baseline justify-between">
-          <div class="title flex gap-4 mb-10 items-baseline">
+        <div class="title flex px-5 md:px-0 mb-5 md:mb-0 items-baseline justify-between flex-col md:flex-row">
+          <div class="title flex gap-4 mb-6 items-baseline">
             <h5 class="text-4xl">{{ categoreFilterName }}</h5>
             <span class="text-black/60"> ( {{ productsNumber }} )</span>
           </div>
           <div class="flex gap-5">
             <div class="limt">
               <span class="text-xl text-meuted me-3">Show:</span>
-              <p-select [options]="limitOptions" [(ngModel)]="selectedLimitOptions" optionLabel="name" placeholder="12"
-                class="w-22 text-black!" />
+              <p-select [options]="limitOptions" (onChange)="getPrductsByShow()" [(ngModel)]="selectedLimitOptions"
+                optionLabel="name" placeholder="12" class="w-22 text-black!" />
             </div>
             <div class="sort">
-              <p-select [options]="sortOptions" [(ngModel)]="selectedSortOptions" optionLabel="name"
-                placeholder="Default Sort" class="w-36 text-black!" />
+              <span class="text-xl text-meuted me-3">Sort:</span>
+              <p-select [options]="sortOptions" (onChange)="getPrductsBySort()" [(ngModel)]="selectedSortOptions"
+                optionLabel="name" placeholder="Default Sort" class="w-36 text-black!" />
             </div>
           </div>
         </div>

@@ -75,18 +75,18 @@ export class CategoriesComponent implements OnInit {
     this.callProducts();
     const brandNames = this.productsArray?.map(p => p.brand.name);
     this.brands = [...new Set(brandNames)];
-    this.sortOptions = [
-      {
-        name: 'Low To Heigh',
-      },
-      { name: 'Heigh To Low' },
-    ];
-    this.limitOptions = [
-      { name: '12' },
-      { name: '24' },
-      { name: '26' },
-      { name: 'All' },
-    ];
+    // this.sortOptions = [
+    //   {
+    //     name: 'Low To Heigh',
+    //   },
+    //   { name: 'Heigh To Low' },
+    // ];
+    // this.limitOptions = [
+    //   { name: '12' },
+    //   { name: '24' },
+    //   { name: '26' },
+    //   { name: 'All' },
+    // ];
   }
   // * method to call all categories 
   callCategories() {

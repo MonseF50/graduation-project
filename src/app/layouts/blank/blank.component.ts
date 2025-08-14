@@ -123,7 +123,14 @@ export class BlankComponent implements OnInit {
     });
   }
   getCartProduct(): void {
-    this.callCartProduct();
-    this.visible = true;
+    this.cartService.getLoggedUerCart().subscribe({
+      next: (res) => {
+        this.cartData = res.data;
+        this.visible = true;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

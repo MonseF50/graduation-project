@@ -20,7 +20,7 @@ export class CartService {
 
   // ? method to call api with the token and porduct id and add porduct to cart 
   addProductToCart(Id: string): Observable<any> {
-    return this.httpClient.post(`https://ecommerce.routemisr.com/api/v1/cart`,
+    return this.httpClient.post(`${environment.baseUrl}/cart`,
       {
         "productId": Id
       },

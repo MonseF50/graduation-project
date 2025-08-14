@@ -16,20 +16,36 @@
     @if (wishListProducts?.length) {
     <div class="p-3 space-y-4 ">
       @for (product of wishListProducts; track product._id) {
-      <div class=" border-b pb-3 flex justify-between items-center">
+      <div class=" border-b pb-3 flex justify-between  flex-col gap-3">
         <div class="flex items-center gap-3">
           <img [src]="product.imageCover" alt="{{ product.title }}" class="w-16 h-16 object-cover rounded" />
           <div class="flex-1">
-            <h3 class="font-semibold text-sm">{{ product.title.split(' ' , 2).join(' ') }}</h3>
-            <p class="text-gray-500 text-xs">{{ product.price }}$</p>
+            <h3 class="font-bold">
+              {{product.category.name}}
+            </h3>
+            <div class="flex justify-between mt-3">
+              <h4 class="font-semibold text-sm">{{ product.title.split(' ' , 2).join(' ') }}</h4>
+              <p class="text-gray-500 text-xs">{{ product.price }}$</p>
+            </div>
           </div>
         </div>
-        <span class="fa-solid fa-trash hover:text-red-600 transition cursor-pointer text-2xl"></span>
+        <div class="flex justify-between flex-col w-full ">
+          <button (click)="removeFormWishList(product._id)"
+            class="text-white bg-red-600 rounded-xl text-sm px-4 mb-2 py-2 cursor-pointer hover:bg-red-800 transition w-2/5 ">Delete</button>
+          <button (click)="addToProductCart(product._id)"
+            class="text-white bg-primary rounded-xl text-sm px-4 py-2 cursor-pointer hover:bg-secondery transition w-3/5   text-nowrap">Add
+            To
+            Cart</button>
+        </div>
       </div>
       }
     </div>
     } @else {
     <div class="p-3 text-gray-500">No items in wishlist.</div>
+    <span routerLink="/products" (click)="visible=false"
+      class="block w-3/5 text-white bg-primary hover:bg-secondery cursor-pointer transition py-2 text-center rounded-xl  mt-5">
+      Go To Shop
+    </span>
     }
   </p-drawer>
 </div>
