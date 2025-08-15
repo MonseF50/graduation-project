@@ -10,7 +10,7 @@
                   <h4 class="text-xl capitalize">fillter by: Price</h4>
                 </p-accordion-header>
                 <p-accordion-content>
-                  <div class="filter-by-price mb-6">
+                  <div class="filter-by-price mb-6 pt-5">
                     <p class="mb-3 text-xl">
                       form {{ rangeValues[0] }} to {{ rangeValues[1] }}
                       <small>EGY</small>
@@ -26,12 +26,12 @@
                   </div>
                 </p-accordion-content>
               </p-accordion-panel>
-              <p-accordion-panel value="2">
+              <p-accordion-panel value="0">
                 <p-accordion-header>
                   <h4 class="text-xl capitalize">fillter by: Categorie</h4>
                 </p-accordion-header>
                 <p-accordion-content class="bg-transparent!">
-                  <div class="filter-by-categore mb-6">
+                  <div class="filter-by-categore mb-6 pt-5">
                     <div class="categorie">
                       <p (click)="callProducts(); categoreFilterName = 'All Products'"
                         class="p-2 hover:bg-gray-200/40 transition text-lg cursor-pointer">
@@ -49,7 +49,7 @@
                 </p-accordion-content>
               </p-accordion-panel>
 
-              <p-accordion-panel value="3">
+              <p-accordion-panel value="2">
                 <p-accordion-header>
                   <h4 class="text-xl capitalize">fillter by: Brand</h4>
                 </p-accordion-header>

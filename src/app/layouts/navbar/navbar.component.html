@@ -1,5 +1,5 @@
-<div #navbar class="absolute start-0 end-0 top-0">
-  <div class="bg-primary py-2">
+<div #navbar class="absolute start-0 end-0 top-0 ">
+  <div class="bg-primary py-2 px-4 md:px-0">
     <div class="container mx-auto flex justify-between items-center">
       <div class="text-white items-center gap-3 flex">
         <app-language></app-language>
@@ -37,14 +37,12 @@
     </div>
   </div>
   @if (isLogged) {
-  <nav [class.fixed-top]="isScrolled" class="bg-white border-gray-200 relative">
+  <nav [class.fixed-top]="isScrolled" class="bg-white border-gray-200 relative px-4 md:px-0">
     <div class="container mx-auto">
       <div class="flex items-center py-3">
         <a routerLink="/home" class="flex items-center gap-3">
-          <img src="/logo.png" class="w-[50px]" alt="shop logo" />
-          <h2 class="font-bold hidden sm:block">
-            {{ "navbar.logo" | translate }}
-          </h2>
+          <img src="/logos/logo.en.png" class="w-[100px] " alt="shop logo" />
+
         </a>
         <div class="flex grow justify-between">
           <div
