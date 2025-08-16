@@ -14,17 +14,8 @@ register();
 })
 export class SwipperComponent implements AfterViewInit {
   @ViewChild('swiperRef') swiperRef!: ElementRef<SwiperContainer>;
-
   ngAfterViewInit() {
     const swiperEl = this.swiperRef.nativeElement;
     swiperEl.initialize();
-  }
-
-  slidePrev() {
-    this.swiperRef.nativeElement.swiper.slidePrev();
-  }
-
-  slideNext() {
-    this.swiperRef.nativeElement.swiper.slideNext();
   }
 }
