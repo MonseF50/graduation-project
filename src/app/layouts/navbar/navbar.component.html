@@ -1,5 +1,5 @@
-<div #navbar class="absolute start-0 end-0 top-0 ">
-  <div class="bg-primary py-2 px-4 md:px-0">
+<div #navbar class="absolute start-0 end-0 top-0  ">
+  <div class="bg-primary py-2 px-4 md:px-0 z-50">
     <div class="container mx-auto flex justify-between items-center">
       <div class="text-white items-center gap-3 flex">
         <app-language></app-language>
@@ -37,7 +37,7 @@
     </div>
   </div>
   @if (isLogged) {
-  <nav [class.fixed-top]="isScrolled" class="bg-white border-gray-200 relative px-4 md:px-0">
+  <nav [class.fixed-top]="isScrolled" class="bg-white border-gray-200 relative px-4 z-40  md:px-0">
     <div class="container mx-auto">
       <div class="flex items-center py-3">
         <a routerLink="/home" class="flex items-center gap-3">
@@ -46,7 +46,7 @@
         </a>
         <div class="flex grow justify-between">
           <div
-            class="browse mx-2 px-3 sm:mx-5 group relative px-5 group hidden bg-white border-2 border-primary hover:bg-primary xl:block">
+            class="browse mx-2 sm:mx-5 group relative px-5 group hidden bg-white border-2 border-primary hover:bg-primary xl:block">
             <div
               class="font-bold flex justify-center items-center text-primary group-hover:text-white cursor-pointer p-3 transition">
               <i class="fa-solid fa-cubes"></i>

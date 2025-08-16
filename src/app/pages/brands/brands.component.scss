@@ -14,6 +14,16 @@ section.brands {
         -o-transition: all 300ms linear;
       }
     }
+    .brand-ltr {
+      left: 100%;
+      animation: go-ltr 30s linear infinite alternate;
+      -webkit-animation: go-ltr 30s linear infinite alternate;
+    }
+    .brand-rtl {
+      right: 100%;
+      animation: go-rtl 30s linear infinite alternate;
+      -webkit-animation: go-rtl 30s linear infinite alternate;
+    }
   }
 }
 @keyframes light {
@@ -25,5 +35,23 @@ section.brands {
   }
   100% {
     box-shadow: 0px 0px 4px 1px var(--color-primary);
+  }
+}
+
+@keyframes go-ltr {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes go-rtl {
+  0% {
+    right: 100%;
+  }
+  100% {
+    right: 0%;
   }
 }

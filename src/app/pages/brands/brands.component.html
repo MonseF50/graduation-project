@@ -1,45 +1,34 @@
 <section class="brands">
   <div class="brands-container">
     <div class="rows">
-      <div class="row-one">
-        @if(brandsData != null){
-        <div>
-          <owl-carousel-o [options]="customOptions1">
-            @for (brand of brandsData.slice(0,20); track brand._id) {
-            <ng-template carouselSlide>
-              <a>
-                <img [src]="brand.image" class="size-[100px]" [alt]="brand.name" />
-              </a>
-            </ng-template>
-            }
-          </owl-carousel-o>
-        </div>
-        <div class="box border-b border-t border-primary">
-          <owl-carousel-o [options]="customOptions2">
-            @for (brand of brandsData; track brand._id) {
-            <ng-template carouselSlide>
-              <a>
-                <img [src]="brand.image" class="size-[100px]" [alt]="brand.name" />
-              </a>
-            </ng-template>
-            }
-          </owl-carousel-o>
-        </div>
-        <div>
-          <owl-carousel-o [options]="customOptions3">
-            @for (brand of brandsData.slice(20,40); track brand._id) {
-            <ng-template carouselSlide>
-              <a>
-                <img [src]="brand.image" class="size-[100px]" [alt]="brand.name" />
-              </a>
-            </ng-template>
-            }
-          </owl-carousel-o>
-        </div>
+
+      @if(brandsData != null){
+      <div class="brand-ltr flex justify-center items-center relative gap-5">
+        @for(brand of brandsData; track brand._id) {
+        <img [src]="brand.image" class="size-[120px]" [alt]="brand.name">
         }
       </div>
+      <div class="box border-b border-t  border-primary">
+        <owl-carousel-o [options]="customOptions2">
+          @for (brand of brandsData; track brand._id) {
+          <ng-template carouselSlide>
+            <a>
+              <img [src]="brand.image" class="size-[100px]" [alt]="brand.name" />
+            </a>
+          </ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+      <div class="brand-rtl flex justify-center items-center relative gap-5">
+        @for(brand of brandsData; track brand._id) {
+        <img [src]="brand.image" class="size-[120px]" [alt]="brand.name">
+        }
+
+      </div>
+      }
     </div>
   </div>
+
 </section>
 <section class="all-brands my-20">
   <div class="container mx-auto">
@@ -66,3 +55,4 @@
     </div>
   </p-dialog>
 </div>
+<!-- <app-swipper></app-swipper> -->

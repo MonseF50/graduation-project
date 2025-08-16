@@ -18,7 +18,7 @@
       @for (product of wishListProducts; track product._id) {
       <div class=" border-b pb-3 flex justify-between  flex-col gap-3">
         <div class="flex items-center gap-3">
-          <img [src]="product.imageCover" alt="{{ product.title }}" class="w-16 h-16 object-cover rounded" />
+          <img [src]="product.imageCover" alt="{{ product.title }}" class="size-[80px]! object-cover rounded" />
           <div class="flex-1">
             <h3 class="font-bold">
               {{product.category.name}}

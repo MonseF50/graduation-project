@@ -7,12 +7,11 @@ import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { RouterLink } from '@angular/router';
-import { register } from 'swiper/element/bundle';
-import { Swiper } from 'swiper/types';
+import { SwipperComponent } from "../../shared/components/swipper/swipper.component";
 
 @Component({
   selector: 'app-brands',
-  imports: [CarouselModule, Dialog, ButtonModule, InputTextModule, RouterLink],
+  imports: [CarouselModule, Dialog, ButtonModule, InputTextModule, RouterLink, SwipperComponent],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -54,41 +53,42 @@ export class BrandsComponent implements OnInit {
   showDialog() {
     this.visible = true;
   }
-  customOptions1: OwlOptions = {
-    loop: true,
-    margin: 20,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    autoplay: true,
-    smartSpeed: 300,
-    autoplaySpeed: 100,
-    rtl: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 10
-      }
-    },
-    nav: false
-  }
+  // customOptions1: OwlOptions = {
+  //   loop: true,
+  //   margin: 20,
+  //   mouseDrag: false,
+  //   touchDrag: false,
+  //   pullDrag: false,
+  //   autoplay: true,
+  //   smartSpeed: 300,
+  //   autoplaySpeed: 100,
+  //   rtl: true,
+  //   dots: false,
+  //   navSpeed: 700,
+  //   navText: ['', ''],
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     400: {
+  //       items: 2
+  //     },
+  //     740: {
+  //       items: 3
+  //     },
+  //     940: {
+  //       items: 10
+  //     }
+  //   },
+  //   nav: false
+  // }
   customOptions2: OwlOptions = {
     loop: true,
     margin: 20,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
+
     rtl: true,
     dots: false,
     navSpeed: 700,
@@ -109,31 +109,32 @@ export class BrandsComponent implements OnInit {
     },
     nav: false
   }
-  customOptions3: OwlOptions = {
-    loop: true,
-    margin: 20,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    rtl: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 10
-      }
-    },
-    nav: false
-  }
+  // customOptions3: OwlOptions = {
+  //   loop: true,
+  //   margin: 20,
+  //   mouseDrag: false,
+  //   touchDrag: false,
+  //   pullDrag: false,
+  //   autoplay: true,
+  //   rtl: true,
+  //   dots: false,
+  //   navSpeed: 700,
+  //   navText: ['', ''],
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     400: {
+  //       items: 2
+  //     },
+  //     740: {
+  //       items: 3
+  //     },
+  //     940: {
+  //       items: 10
+  //     }
+  //   },
+  //   nav: false
+  // }
 
 }

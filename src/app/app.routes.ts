@@ -3,6 +3,8 @@ import { AuthComponent } from './layouts/auth/auth.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { authGuard } from './core/gurds/auth/auth.guard';
 import { noauthGuard } from './core/gurds/noauth/noauth.guard';
+import { Component } from '@angular/core';
+import { Swiper } from 'swiper/types';
 
 export const routes: Routes = [
     {
@@ -83,7 +85,8 @@ export const routes: Routes = [
 
                 loadComponent: () => import('./pages/reset-password/reset-password.component').then((comp) => comp.ResetPasswordComponent),
                 title: 'Change Password'
-            }
+            },
+
         ]
     },
     {

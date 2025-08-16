@@ -1,0 +1,22 @@
+swiper-container::part(wrapper) {
+  padding-block: 50px;
+}
+/* Custom pagination bullets */
+swiper-container::part(pagination) {
+  // position: absolute;
+  z-index: 90;
+  // bottom: -30px; /* Adjust this value to move bullets up/down */
+  left: 50%;
+}
+
+/* Active bullet style */
+swiper-container::part(bullet-active) {
+  background-color: var(--color-secondery);
+  transform: scale(1.2);
+}
+
+.custom-prev-btn:disabled,
+.custom-next-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}

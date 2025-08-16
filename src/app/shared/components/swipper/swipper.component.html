@@ -1,0 +1,43 @@
+<div class="container mx-auto pt-40">
+    <div class="custom-navigation flex justify-center gap-5">
+        <button
+            class="custom-prev-btn px-6 py-3 flex justify-center cursor-pointer items-center bg-primary hover:bg-secondery transition duration-500 border-0 rounded-sm text-white "
+            (click)="slidePrev()">
+            <span class="pi pi-chevron-left"></span>
+        </button>
+        <button
+            class="custom-next-btn px-6 py-3 flex justify-center cursor-pointer items-center bg-primary hover:bg-secondery transition duration-500 border-0 rounded-sm text-white "
+            (click)="slideNext()">
+            <span class="pi pi-chevron-right"></span>
+        </button>
+    </div>
+    <swiper-container #swiperRef slides-per-view="3" space-between="20" autoplay="true"
+        [pagination]="{ hideOnClick: false }" loop="true" pagination-dynamic-bullets="true"
+        [breakpoints]="{ '1200': { slidesPerView: 4 }, '992': { slidesPerView: 3 }, '768': { slidesPerView: 2 }, '576': { slidesPerView: 1 } }">
+        <swiper-slide class=" cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            1</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            2</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+        <swiper-slide class="cursor-pointer size-[200px] bg-red-300 flex justify-center items-center">Slide
+            3</swiper-slide>
+    </swiper-container>
+
+</div>

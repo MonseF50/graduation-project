@@ -85,8 +85,8 @@ export class SharedProductsComponent {
     ];
     this.limitOptions = [
       { name: '12', value: '12' },
+      { name: '18', value: '18' },
       { name: '24', value: '24' },
-      { name: '26', value: '26' },
     ];
   }
   // * method to call all categories 
